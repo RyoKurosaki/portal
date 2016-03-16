@@ -1,0 +1,21 @@
+p#notice = notice
+
+p
+  strong Name:
+  = @listing.name
+p
+  strong Address:
+  = @listing.address
+p
+  strong Photo:
+  = @listing.photo
+p
+  strong Manual:
+  = @listing.manual
+p
+  strong Map:
+  = @listing.map
+
+= link_to 'Edit', edit_listing_path(@listing)
+'|
+= link_to 'Back', listings_path

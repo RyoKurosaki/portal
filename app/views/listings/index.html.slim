@@ -1,0 +1,29 @@
+h1 Listing listings
+
+table
+  thead
+    tr
+      th Name
+      th Address
+      th Photo
+      th Manual
+      th Map
+      th
+      th
+      th
+
+  tbody
+    - @listings.each do |listing|
+      tr
+        td = listing.name
+        td = listing.address
+        td = listing.photo
+        td = listing.manual
+        td = listing.map
+        td = link_to 'Show', listing
+        td = link_to 'Edit', edit_listing_path(listing)
+        td = link_to 'Destroy', listing, data: {:confirm => 'Are you sure?'}, :method => :delete
+
+br
+
+= link_to 'New Listing', new_listing_path
