@@ -17,7 +17,8 @@ table
       tr
         td = listing.name
         td = listing.address
-        td = listing.photo
+        td
+          img src = listing.photo
         td = listing.manual
         td = listing.map
         td = link_to 'Show', listing

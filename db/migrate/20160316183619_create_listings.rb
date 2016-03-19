@@ -6,8 +6,10 @@ class CreateListings < ActiveRecord::Migration
       t.string :photo
       t.string :manual
       t.string :map
+      t.string :access_token, :null => false, :limit => 12
 
       t.timestamps null: false
     end
+    add_index :listings, :access_token, :unique => true
   end
 end

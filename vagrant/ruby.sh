@@ -13,5 +13,5 @@ wget -O- https://toolbelt.heroku.com/install-ubuntu.sh | sh
 cd /vagrant
 bundle install
 
-rake db:create
-rake db:migrate
+# rake db:create
+# rake db:migrate
