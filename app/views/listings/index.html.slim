@@ -18,9 +18,9 @@ table
         td = listing.name
         td = listing.address
         td
-          img src = listing.photo
-        td = listing.manual
-        td = listing.map
+          = image_tag(listing.photo, alt: '', size: '30x40')
+        td = link_to 'manual', listing.manual
+        td = link_to 'map', listing.map
         td = link_to 'Show', listing
         td = link_to 'Edit', edit_listing_path(listing)
         td = link_to 'Destroy', listing, data: {:confirm => 'Are you sure?'}, :method => :delete

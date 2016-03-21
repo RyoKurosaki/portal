@@ -13,5 +13,9 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery.ui.widget.js
+//= require load-image.all.min.js
+//= rewuire canvas-to-blob.min.js
 //= require z.jquery.fileupload
+//= require z.jquery.fileupload-process
+//= require z.jquery.fileupload-image
 //= require_tree .

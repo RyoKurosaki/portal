@@ -7,15 +7,14 @@ p
   strong Address:
   = @listing.address
 p
-  strong Photo:
-  = @listing.photo
+  = image_tag(@listing.photo, alt: '', size: '240x320')
 p
   strong Manual:
-  = @listing.manual
+  = link_to 'manual', @listing.manual
 p
   strong Map:
-  = @listing.map
-
-= link_to 'Edit', edit_listing_path(@listing)
-'|
-= link_to 'Back', listings_path
+  = link_to 'map', @listing.map
+- if user_signed_in?
+  = link_to 'Edit', edit_listing_path(@listing)
+  '|
+  = link_to 'Back', listings_path
