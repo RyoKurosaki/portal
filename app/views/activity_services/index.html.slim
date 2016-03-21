@@ -1,0 +1,27 @@
+h1 Listing activity_services
+
+table
+  thead
+    tr
+      th Plan
+      th Category
+      th Photo
+      th Amount
+      th
+      th
+      th
+
+  tbody
+    - @activity_services.each do |activity_service|
+      tr
+        td = activity_service.plan
+        td = activity_service.category
+        td = activity_service.photo
+        td = activity_service.amount
+        td = link_to 'Show', activity_service
+        td = link_to 'Edit', edit_activity_service_path(activity_service)
+        td = link_to 'Destroy', activity_service, data: {:confirm => 'Are you sure?'}, :method => :delete
+
+br
+
+= link_to 'New Activity service', new_activity_service_path

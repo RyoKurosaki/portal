@@ -12,6 +12,7 @@ class ListingsController < ApplicationController
   # GET /listings/1
   # GET /listings/1.json
   def show
+    @categories = Category.all
   end
 
   # GET /listings/new

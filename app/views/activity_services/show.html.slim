@@ -1,0 +1,21 @@
+p#notice = notice
+
+p
+  strong Plan:
+  = @activity_service.plan
+p
+  strong Category:
+  = @activity_service.category
+p
+  strong Detail:
+  = @activity_service.detail
+p
+  strong Photo:
+  = @activity_service.photo
+p
+  strong Amount:
+  = @activity_service.amount
+- if user_signed_in? && current_user.admin?
+  = link_to 'Edit', edit_activity_service_path(@activity_service)
+  '|
+  = link_to 'Back', activity_services_path

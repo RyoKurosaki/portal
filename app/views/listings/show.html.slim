@@ -14,6 +14,11 @@ p
 p
   strong Map:
   = link_to 'map', @listing.map
+p
+  strong Activity:
+  - @categories.each do |category|
+    br
+    = link_to category.category, category
 - if user_signed_in?
   = link_to 'Edit', edit_listing_path(@listing)
   '|
