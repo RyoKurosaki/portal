@@ -1,19 +1,21 @@
-p#notice = notice
+.container
 
-p
-  strong Category:
-  = @category.category
-p
-  = image_tag(@category.photo, alt: '', size: '240x320')
-p
-  strong Detail:
-  = @category.detail
-p
-  strong List:
-  - @activity_services.each do |activity_service|
-    br
-    = link_to activity_service.plan, activity_service
+  p#notice = notice
 
-= link_to 'Edit', edit_category_path(@category)
-'|
-= link_to 'Back', categories_path
+  p
+    strong Category:
+    = @category.category
+  p
+    = image_tag(@category.photo, alt: '', size: '240x320')
+  p
+    strong Detail:
+    = @category.detail
+  p
+    strong List:
+    - @activity_services.each do |activity_service|
+      br
+      = link_to activity_service.plan, activity_service
+
+  = link_to 'Edit', edit_category_path(@category)
+  '|
+  = link_to 'Back', categories_path

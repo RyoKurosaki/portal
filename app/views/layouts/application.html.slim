@@ -8,17 +8,28 @@ html
     = csrf_meta_tags
   body
     header
-      nav
-        - if user_signed_in?
-          |  Logged in as
-          strong
-            = current_user.email
-          | .
-          = link_to 'プロフィール変更', edit_user_registration_path
-          = link_to 'ログアウト', destroy_user_session_path, method: :delete
-        - else
-          = link_to 'サインアップ', new_user_registration_path
-          = link_to 'ログイン', new_user_session_path
+      nav class = 'navbar navbar-default'
+        .container-fluid
+          .navbar-header
+            = link_to 'Guest Portal', root_path, class:'navbar-brand'
+          ul class = 'nav navbar-nav'
+            - if user_signed_in?
+              li = link_to 'ホーム', root_path
+              li = link_to 'listings', listings_path
+              - if current_user.admin?
+                li = link_to 'activity service', activity_services_path
+                li = link_to 'category', categories_path
+          ul class = 'nav navbar-nav navbar-right'
+            - if user_signed_in?
+              li = link_to current_user.email, root_path
+              li = link_to 'プロフィール変更', edit_user_registration_path
+              li = link_to 'ログアウト', destroy_user_session_path, method: :delete
+            - else
+              li = link_to 'サインアップ', new_user_registration_path
+              li
+                a> href = new_user_session_path
+                  span class = 'glyphicon glyphicon-log-in'
+                    | .ログイン
     p.notice
       = notice
     p.alert

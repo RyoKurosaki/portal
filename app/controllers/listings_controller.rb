@@ -70,10 +70,6 @@ class ListingsController < ApplicationController
       @listing = Listing.find(params[:access_token])
     end
 
-    def set_s3_direct_post
-      @s3_direct_post = S3_BUCKET.presigned_post(key: "uploads/#{SecureRandom.uuid}/${filename}", success_action_status: '201', acl: 'public-read')
-    end
-
     # Never trust parameters from the scary internet, only allow the white list through.
     def listing_params
       params.require(:listing).permit(:name, :address, :photo, :manual, :map)

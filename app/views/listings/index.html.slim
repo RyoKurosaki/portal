@@ -1,30 +1,32 @@
-h1 Listing listings
+.container
 
-table
-  thead
-    tr
-      th Name
-      th Address
-      th Photo
-      th Manual
-      th Map
-      th
-      th
-      th
+  h1 Listing listings
 
-  tbody
-    - @listings.each do |listing|
+  table class = 'table table-striped'
+    thead
       tr
-        td = listing.name
-        td = listing.address
-        td
-          = image_tag(listing.photo, alt: '', size: '30x40')
-        td = link_to 'manual', listing.manual
-        td = link_to 'map', listing.map
-        td = link_to 'Show', listing
-        td = link_to 'Edit', edit_listing_path(listing)
-        td = link_to 'Destroy', listing, data: {:confirm => 'Are you sure?'}, :method => :delete
+        th Name
+        th Address
+        th Photo
+        th Manual
+        th Map
+        th
+        th
+        th
 
-br
+    tbody
+      - @listings.each do |listing|
+        tr
+          td = listing.name
+          td = listing.address
+          td
+            = image_tag(listing.photo, alt: '', size: '30x40')
+          td = link_to 'manual', listing.manual
+          td = link_to 'map', listing.map
+          td = link_to 'Show', listing
+          td = link_to 'Edit', edit_listing_path(listing)
+          td = link_to 'Destroy', listing, data: {:confirm => 'Are you sure?'}, :method => :delete
 
-= link_to 'New Listing', new_listing_path
+  br
+
+  = link_to 'New Listing', new_listing_path, class:'btn btn-default'

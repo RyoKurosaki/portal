@@ -1,25 +1,27 @@
-p#notice = notice
+.container
 
-p
-  strong Name:
-  = @listing.name
-p
-  strong Address:
-  = @listing.address
-p
-  = image_tag(@listing.photo, alt: '', size: '240x320')
-p
-  strong Manual:
-  = link_to 'manual', @listing.manual
-p
-  strong Map:
-  = link_to 'map', @listing.map
-p
-  strong Activity:
-  - @categories.each do |category|
-    br
-    = link_to category.category, category
-- if user_signed_in?
-  = link_to 'Edit', edit_listing_path(@listing)
-  '|
-  = link_to 'Back', listings_path
+  p#notice = notice
+
+  p
+    strong Name:
+    = @listing.name
+  p
+    strong Address:
+    = @listing.address
+  p
+    = image_tag(@listing.photo, alt: '', size: '240x320')
+  p
+    strong Manual:
+    = link_to 'manual', @listing.manual
+  p
+    strong Map:
+    = link_to 'map', @listing.map
+  p
+    strong Activity:
+    - @categories.each do |category|
+      br
+      = link_to category.category, category
+  - if user_signed_in?
+    = link_to 'Edit', edit_listing_path(@listing)
+    '|
+    = link_to 'Back', listings_path

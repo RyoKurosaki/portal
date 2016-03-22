@@ -6,19 +6,19 @@
         - @listing.errors.full_messages.each do |message|
           li = message
 
-  .field
+  .field.form-group
     = f.label :name
-    = f.text_field :name
-  .field
+    = f.text_field :name, class:'form-control'
+  .field.form-group
     = f.label :address
-    = f.text_field :address
-  .field
+    = f.text_field :address, class:'form-control'
+  .field.form-group
     = f.label :photo
-    = f.file_field :photo, accept: 'image/*'
-  .field
+    = f.file_field :photo, accept: 'image/*', class:'form-control'
+  .field.form-group
     = f.label :manual
-    = f.file_field :manual
-  .field
+    = f.file_field :manual, class:'form-control'
+  .field.form-group
     = f.label :map
-    = f.file_field :map
-  .actions = f.submit
+    = f.file_field :map, class:'form-control'
+    .actions = f.submit :submit, class:'btn btn-default'

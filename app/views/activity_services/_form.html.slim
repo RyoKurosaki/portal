@@ -1,4 +1,4 @@
-= form_for @activity_service do |f|
+= form_for @activity_service, html: { class: 'directUpload', data: { 'form-data' => (@s3_direct_post.fields), 'url' => @s3_direct_post.url, 'host' => URI.parse(@s3_direct_post.url).host } } do |f|
   - if @activity_service.errors.any?
     #error_explanation
       h2 = "#{pluralize(@activity_service.errors.count, "error")} prohibited this activity_service from being saved:"
@@ -6,19 +6,19 @@
         - @activity_service.errors.full_messages.each do |message|
           li = message
 
-  .field
+  .field.form-group
     = f.label :plan
-    = f.text_field :plan
-  .field
+    = f.text_field :plan, class:'form-control'
+  .field.form-group
     = f.label :category
-    = f.collection_select :category, Category.all, :category, :category
-  .field
+    = f.collection_select :category, Category.all, :category, :category, class:'form-control'
+  .field.form-group
     = f.label :detail
-    = f.text_area :detail
-  .field
+    = f.text_area :detail, class:'form-control'
+  .field.form-group
     = f.label :photo
-    = f.file_field :photo
-  .field
+    = f.file_field :photo, accept: 'image/*', class:'form-control'
+  .field.form-group
     = f.label :amount
-    = f.text_field :amount
-  .actions = f.submit
+    = f.text_field :amount, class:'form-control'
+  .actions = f.submit :submit, class:'btn btn-default'
