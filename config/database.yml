@@ -3,16 +3,18 @@ default: &default
   pool: 5
   encoding: unicode
   username: postgres
-  port: 5433
 
 development:
   <<: *default
   database: portal_development
+  port: 5433
 
 test:
   <<: *default
   database: portal_test
+  port: 5433
 
 production:
   <<: *default
   database: portal_production
+  port: 5432
