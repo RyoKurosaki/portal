@@ -18,4 +18,5 @@
 //= require z.jquery.fileupload
 //= require z.jquery.fileupload-process
 //= require z.jquery.fileupload-image
+//= require bootstrap-sprockets
 //= require_tree .
