@@ -1,0 +1,23 @@
+= form_for @payment, url: purchase_payments_path do |f|
+  - if @payment.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@payment.errors.count, "error")} prohibited this payment from being saved:"
+      ul
+        - @payment.errors.full_messages.each do |message|
+          li = message
+
+  .field.form-group
+    = f.label :name
+    = f.text_field :name, class:'form-control'
+  .field.form-group
+    = f.label :email
+    = f.email_field :email, class:'form-control'
+  .field.form-group
+    = f.label :tel
+    = f.text_field :tel, class:'form-control'
+  div
+    = javascript_include_tag "https://checkout.webpay.jp/v3/", \
+    class: 'webpay-button', :'data-text' => 'Payment', \
+    :'data-submit-text' => 'Confirm the information', :'data-key' => "#{ENV['webpay_public_key']}",\
+    :'data-lang' => 'en', :'data-partial' => 'true'
+  .actions = f.submit :submit, class:'btn btn-default'

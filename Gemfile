@@ -18,6 +18,7 @@ gem 'rails_admin'
 
 gem 'resources_id_replace'
 gem 'aws-sdk', '~> 2'
+gem 'webpay', '~>3.2'
 
 gem 'bootstrap-sass'
 gem 'sass-rails', '~> 5.0'

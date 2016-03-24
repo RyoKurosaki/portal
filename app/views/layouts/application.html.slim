@@ -23,13 +23,14 @@ html
             - if user_signed_in?
               li = link_to current_user.email, root_path
               li = link_to 'プロフィール変更', edit_user_registration_path
-              li = link_to 'ログアウト', destroy_user_session_path, method: :delete
+              li = link_to destroy_user_session_path, method: :delete do
+                span.glyphicon.glyphicon-log-out
+                |  ログアウト
             - else
               li = link_to 'サインアップ', new_user_registration_path
-              li
-                a> href = new_user_session_path
-                  span class = 'glyphicon glyphicon-log-in'
-                    | .ログイン
+              li = link_to new_user_session_path do
+                span.glyphicon.glyphicon-log-in
+                |  ログイン
     p.notice
       = notice
     p.alert

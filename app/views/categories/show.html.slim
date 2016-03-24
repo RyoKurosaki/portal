@@ -16,6 +16,7 @@
       br
       = link_to activity_service.plan, activity_service
 
-  = link_to 'Edit', edit_category_path(@category)
-  '|
-  = link_to 'Back', categories_path
+  - if user_signed_in? && current_user.admin?
+    = link_to 'Edit', edit_category_path(@category)
+    '|
+    = link_to 'Back', categories_path

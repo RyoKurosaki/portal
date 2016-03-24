@@ -1,0 +1,9 @@
+default: &default
+
+development:
+  <<: *default
+  webpay_public_key: test_public_7n7fahbBC4I8eWIem38Kj3Kg
+  webpay_secret_key: test_secret_d0T8rfgtH6cdaJHdmR1iYccL
+
+production:
+  <<: *default

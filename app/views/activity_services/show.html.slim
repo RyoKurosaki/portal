@@ -12,11 +12,13 @@
     strong Detail:
     = @activity_service.detail
   p
-    strong Photo:
-    = @activity_service.photo
+    = image_tag(@activity_service.photo, alt: '', size: '240x320')
   p
     strong Amount:
     = @activity_service.amount
+
+  = link_to 'Choose this', new_payment_path, class:'btn btn-default'
+  br
   - if user_signed_in? && current_user.admin?
     = link_to 'Edit', edit_activity_service_path(@activity_service)
     '|
