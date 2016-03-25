@@ -6,32 +6,38 @@ html
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
-    meta name = 'viewport' content = 'width=device-width, initial-scale=1.0'
+    = viewport_meta_tag
   body
     header
       nav class = 'navbar navbar-default'
         .container-fluid
           .navbar-header
+            button type = 'button' class = 'navbar-toggle collapsed' data-toggle = 'collapse' data-target = '#bs-example-navbar-collapse-1'
+              span class = 'sr-only'
+              span class = 'icon-bar'
+              span class = 'icon-bar'
+              span class = 'icon-bar'
             = link_to 'Guest Portal', root_path, class:'navbar-brand'
-          ul class = 'nav navbar-nav'
-            - if user_signed_in?
-              li = link_to 'ホーム', root_path
-              li = link_to 'listings', listings_path
-              - if current_user.admin?
-                li = link_to 'activity service', activity_services_path
-                li = link_to 'category', categories_path
-          ul class = 'nav navbar-nav navbar-right'
-            - if user_signed_in?
-              li = link_to current_user.email, root_path
-              li = link_to 'プロフィール変更', edit_user_registration_path
-              li = link_to destroy_user_session_path, method: :delete do
-                span.glyphicon.glyphicon-log-out
-                |  ログアウト
-            - else
-              li = link_to 'サインアップ', new_user_registration_path
-              li = link_to new_user_session_path do
-                span.glyphicon.glyphicon-log-in
-                |  ログイン
+          .collapse.navbar-collapse#bs-example-navbar-collapse-1
+            ul class = 'nav navbar-nav'
+              - if user_signed_in?
+                li = link_to 'ホーム', root_path
+                li = link_to 'listings', listings_path
+                - if current_user.admin?
+                  li = link_to 'activity service', activity_services_path
+                  li = link_to 'category', categories_path
+            ul class = 'nav navbar-nav navbar-right'
+              - if user_signed_in?
+                li = link_to current_user.email, root_path
+                li = link_to 'プロフィール変更', edit_user_registration_path
+                li = link_to destroy_user_session_path, method: :delete do
+                  span.glyphicon.glyphicon-log-out
+                  |  ログアウト
+              - else
+                li = link_to 'サインアップ', new_user_registration_path
+                li = link_to new_user_session_path do
+                  span.glyphicon.glyphicon-log-in
+                  |  ログイン
     p.notice
       = notice
     p.alert
