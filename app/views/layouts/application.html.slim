@@ -38,8 +38,6 @@ html
                 li = link_to new_user_session_path do
                   span.glyphicon.glyphicon-log-in
                   |  ログイン
-    p.notice
-      = notice
-    p.alert
-      = alert
-    = yield
+    .container
+      = flash_messages
+      = yield
