@@ -1,27 +1,33 @@
-h1 Listing activity_services
+.row
+  .col-sm-2
+  .col-sm-8
+    h1 activity_services
 
-table class = 'table table-striped'
-  thead
-    tr
-      th Plan
-      th Category
-      th Photo
-      th Amount
-      th
-      th
-      th
+    .table-responsive
+      table class = 'table table-striped'
+        thead
+          tr
+            th Plan
+            th Category
+            th Photo
+            th Amount
+            th
+            th
+            th
 
-  tbody
-    - @activity_services.each do |activity_service|
-      tr
-        td = activity_service.plan
-        td = activity_service.category
-        td = activity_service.photo
-        td = activity_service.amount
-        td = link_to 'Show', activity_service
-        td = link_to 'Edit', edit_activity_service_path(activity_service)
-        td = link_to 'Destroy', activity_service, data: {:confirm => 'Are you sure?'}, :method => :delete
+        tbody
+          - @activity_services.each do |activity_service|
+            tr
+              td = activity_service.plan
+              td = activity_service.category
+              td
+                = image_tag(activity_service.photo, alt: '', size: '30x40')
+              td = activity_service.amount
+              td = link_to 'Show', activity_service
+              td = link_to 'Edit', edit_activity_service_path(activity_service)
+              td = link_to 'Destroy', activity_service, data: {:confirm => 'Are you sure?'}, :method => :delete
 
-br
+    br
 
-= link_to 'New Activity service', new_activity_service_path, class:'btn btn-default'
+    = link_to 'New Activity service', new_activity_service_path, class:'btn btn-default'
+  .col-sm-2

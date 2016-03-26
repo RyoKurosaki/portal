@@ -1,21 +1,26 @@
-h1 Listing categories
+.row
+  .col-sm-2
+  .col-sm-8
+    h1 Listing categories
 
-table class = 'table table-striped'
-  thead
-    tr
-      th Category
-      th
-      th
-      th
+    .table-responsive
+      table class = 'table table-striped'
+        thead
+          tr
+            th Category
+            th
+            th
+            th
 
-  tbody
-    - @categories.each do |category|
-      tr
-        td = category.category
-        td = link_to 'Show', category
-        td = link_to 'Edit', edit_category_path(category)
-        td = link_to 'Destroy', category, data: {:confirm => 'Are you sure?'}, :method => :delete
+        tbody
+          - @categories.each do |category|
+            tr
+              td = category.category
+              td = link_to 'Show', category
+              td = link_to 'Edit', edit_category_path(category)
+              td = link_to 'Destroy', category, data: {:confirm => 'Are you sure?'}, :method => :delete
 
-br
+    br
 
-= link_to 'New Category', new_category_path, class:'btn btn-default'
+    = link_to 'New Category', new_category_path, class:'btn btn-default'
+  .col-sm-2
