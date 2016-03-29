@@ -1,0 +1,24 @@
+.row
+  .col-sm-2
+  .col-sm-8
+    h1 Notices
+
+    .table-responsive
+      table class = 'table table-striped table-hover'
+        thead
+          tr
+            th Text
+            th
+            th
+
+        tbody
+          - @notices.each do |notice|
+            tr
+              td = notice.text
+              td = link_to 'Edit', edit_notice_path(notice)
+              td = link_to 'Destroy', notice, data: {:confirm => 'Are you sure?'}, :method => :delete
+
+    br
+
+    = link_to 'New Notice', new_notice_path, class:'btn btn-default'
+  .col-sm-2
