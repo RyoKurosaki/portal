@@ -13,6 +13,7 @@ class ListingsController < ApplicationController
   # GET /listings/1.json
   def show
     @categories = Category.all
+    @user = User.find_by_email(@listing.host_email)
   end
 
   # GET /listings/new
@@ -43,6 +44,18 @@ class ListingsController < ApplicationController
   # PATCH/PUT /listings/1
   # PATCH/PUT /listings/1.json
   def update
+    if listing_params.has_key?('photo')
+      foldernames = [@listing.photo.match(/uploads.*/)[0]]
+    end
+    if listing_params.has_key?('manual')
+      foldernames.push(@listing.manual.match(/uploads.*/)[0])
+    end
+    if listing_params.has_key?('map')
+      foldernames.push(@listing.map.match(/uploads.*/)[0])
+    end
+    foldernames.each {|foldername|
+      S3_BUCKET.delete_objects(delete: {objects: [key: foldername]})
+    }
     respond_to do |format|
       if @listing.update(listing_params)
         format.html { redirect_to @listing, notice: 'Listing was successfully updated.' }
@@ -57,6 +70,11 @@ class ListingsController < ApplicationController
   # DELETE /listings/1
   # DELETE /listings/1.json
   def destroy
+    foldernames = [@listing.photo.match(/uploads.*/)[0], @listing.manual.match(/uploads.*/)[0], @listing.map.match(/uploads.*/)[0]]
+    foldernames.each {|foldername|
+      S3_BUCKET.delete_objects(delete: {objects: [key: foldername]})
+    }
+
     @listing.destroy
     respond_to do |format|
       format.html { redirect_to listings_url, notice: 'Listing was successfully destroyed.' }

@@ -7,4 +7,17 @@ class ApplicationController < ActionController::Base
     def set_s3_direct_post
       @s3_direct_post = S3_BUCKET.presigned_post(key: "uploads/#{SecureRandom.uuid}/${filename}", success_action_status: '201', acl: 'public-read')
     end
+
+  before_filter :configure_permitted_parameters, if: :devise_controller?
+  protected
+    def configure_permitted_parameters
+      devise_parameter_sanitizer.for(:sign_up) << :name
+      devise_parameter_sanitizer.for(:sign_up) << :tel
+      devise_parameter_sanitizer.for(:sign_up) << :line
+      devise_parameter_sanitizer.for(:sign_up) << :facebook
+      devise_parameter_sanitizer.for(:account_update) << :name
+      devise_parameter_sanitizer.for(:account_update) << :tel
+      devise_parameter_sanitizer.for(:account_update) << :line
+      devise_parameter_sanitizer.for(:account_update) << :facebook
+    end
 end

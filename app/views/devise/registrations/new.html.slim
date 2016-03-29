@@ -6,9 +6,25 @@
     = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
       = devise_error_messages!
       .field.form-group
+        = f.label :name
+        br
+        = f.text_field :name, class:'form-control'
+      .field.form-group
         = f.label :email
         br
         = f.email_field :email, autofocus: true, class:'form-control'
+      .field.form-group
+        = f.label :tel
+        br
+        = f.text_field :tel, class:'form-control'
+      .field.form-group
+        = f.label :line
+        br
+        = f.text_field :line, class:'form-control'
+      .field.form-group
+        = f.label :facebook
+        br
+        = f.text_field :facebook, class:'form-control'
       .field.form-group
         = f.label :password
         - if @minimum_password_length

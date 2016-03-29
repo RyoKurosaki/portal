@@ -6,15 +6,31 @@
       = @listing.name
     p
       strong Address:
-      = @listing.address
+      = @listing.address+' '
+      = link_to 'Open with Google Map', 'https://www.google.com/maps?q='+@listing.address, target: '_new'
     p
-      = image_tag(@listing.photo, alt: '', size: '240x320')
+      = image_tag(@listing.photo, alt: '', width: '320')
     p
       strong Manual:
       = link_to 'manual', @listing.manual
     p
       strong Map:
       = link_to 'map', @listing.map
+    p
+      strong Host Name:
+      = @user.name
+    p
+      strong Contact E-Mail:
+      = link_to @user.email, 'mailto:'+@user.email
+    p
+      strong Contact Number:
+      = link_to @user.tel, 'tel:'+@user.tel
+    p
+      strong LINE Account:
+      = @user.line
+    p
+      strong Facebook Account:
+      = @user.facebook
     p
       strong Activity:
       - @categories.each do |category|
@@ -24,4 +40,5 @@
       = link_to 'Edit', edit_listing_path(@listing)
       '|
       = link_to 'Back', listings_path
+
   .col-sm-2
