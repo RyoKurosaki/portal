@@ -36,9 +36,9 @@
       - @categories.each do |category|
         br
         = link_to category.category, category
+
     - if user_signed_in?
       = link_to 'Edit', edit_listing_path(@listing)
       '|
       = link_to 'Back', listings_path
-
   .col-sm-2
