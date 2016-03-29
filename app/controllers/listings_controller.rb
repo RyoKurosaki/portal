@@ -44,13 +44,14 @@ class ListingsController < ApplicationController
   # PATCH/PUT /listings/1
   # PATCH/PUT /listings/1.json
   def update
-    if listing_params.has_key?('photo')
-      foldernames = [@listing.photo.match(/uploads.*/)[0]]
+    foldernames = []
+    if listing_params.has_key?('photo') && @listing.photo.present?
+      foldernames.push(@listing.photo.match(/uploads.*/)[0])
     end
-    if listing_params.has_key?('manual')
+    if listing_params.has_key?('manual') && @listing.manual.present?
       foldernames.push(@listing.manual.match(/uploads.*/)[0])
     end
-    if listing_params.has_key?('map')
+    if listing_params.has_key?('map') && @listing.map.present?
       foldernames.push(@listing.map.match(/uploads.*/)[0])
     end
     foldernames.each {|foldername|
@@ -70,7 +71,17 @@ class ListingsController < ApplicationController
   # DELETE /listings/1
   # DELETE /listings/1.json
   def destroy
-    foldernames = [@listing.photo.match(/uploads.*/)[0], @listing.manual.match(/uploads.*/)[0], @listing.map.match(/uploads.*/)[0]]
+    foldernames = []
+    unless @listing.photo.blank?
+      foldernames.push(@listing.photo.match(/uploads.*/)[0])
+    end
+    unless @listing.manual.blank?
+      foldernames.push(@listing.manual.match(/uploads.*/)[0])
+    end
+    unless @listing.map.blank?
+      foldernames.push(@listing.map.match(/uploads.*/)[0])
+    end
+
     foldernames.each {|foldername|
       S3_BUCKET.delete_objects(delete: {objects: [key: foldername]})
     }
