@@ -3,7 +3,7 @@
   .col-sm-8
     p
       strong Category:
-      = @category.category
+      = @category.name
     p
       = image_tag(@category.photo, alt: '', size: '240x320')
     p
@@ -11,9 +11,9 @@
       = @category.detail
     p
       strong List:
-      - @activity_services.each do |activity_service|
+      - @category.activity_services.each do |activity_service|
         br
-        = link_to activity_service.plan, activity_service
+        = link_to activity_service.name, activity_service
 
     - if user_signed_in? && current_user.admin?
       = link_to 'Edit', edit_category_path(@category)

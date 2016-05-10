@@ -12,7 +12,6 @@ class CategoriesController < ApplicationController
   # GET /categories/1
   # GET /categories/1.json
   def show
-    @activity_services = ActivityService.where("category = ?", @category.category)
   end
 
   # GET /categories/new
@@ -72,6 +71,6 @@ class CategoriesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def category_params
-      params.require(:category).permit(:category, :photo, :detail)
+      params.require(:category).permit(:name, :photo, :detail)
     end
 end

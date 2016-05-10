@@ -32,10 +32,30 @@
       strong Facebook Account:
       = @user.facebook
     p
-      strong Activity:
-      - @categories.each do |category|
-        br
-        = link_to category.category, category
+      strong Services:
+      br
+      | where are you going?
+      = form_for @activity_service do |f|
+        .ajax-div
+          .field.form-group
+            = f.label :prefecture
+            - prefecture_options = Prefecture.order(:id).map { |c| [c.name, c.id, data: { children_path: prefecture_major_cities_path(c) }] }
+            = f.select :prefecture_id, prefecture_options, { include_blank: true }, class: 'select-parent'
+          .field.form-group
+            = f.label :city
+            - major_cities = @activity_service.prefecture.try(:major_cities) || []
+            - major_city_options = major_cities.map { |c| [c.name, c.id] }
+            = f.select :major_city_id, major_city_options, { include_blank: true }, class: 'select-children'
+        .ajax-div
+          .field.form-group
+            = f.label :category
+            - category_options = Category.order(:id).map { |c| [c.name, c.id, data: { children_path: ajax_activity_service_path(c) }] }
+            = f.select :category_id, category_options, { include_blank: true }, class: 'select-parent'
+          .field.form-group
+            = f.label :activity_service
+            - activity_services = @activity_service.category.try || []
+            - activity_service_options = activity_services.map { |c| [c.name, c.id] }
+            = f.select :id, activity_service_options, { include_blank: true }, class: 'select-children'
 
     / - if user_signed_in?
     = link_to 'Edit', edit_listing_path(@listing)

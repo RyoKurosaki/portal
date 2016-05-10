@@ -11,27 +11,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160329071126) do
+ActiveRecord::Schema.define(version: 20160508122901) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "activity_services", force: :cascade do |t|
-    t.string   "plan"
-    t.string   "category"
     t.string   "photo"
     t.string   "amount"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
     t.text     "detail"
+    t.string   "major_city_id"
+    t.string   "prefecture_id"
+    t.string   "category_id"
+    t.string   "name"
   end
 
   create_table "categories", force: :cascade do |t|
-    t.string   "category"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string   "photo"
     t.text     "detail"
+    t.string   "name"
   end
 
   create_table "listings", force: :cascade do |t|
@@ -48,6 +50,13 @@ ActiveRecord::Schema.define(version: 20160329071126) do
 
   add_index "listings", ["access_token"], name: "index_listings_on_access_token", unique: true, using: :btree
 
+  create_table "major_cities", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.string   "prefecture_id"
+  end
+
   create_table "notices", force: :cascade do |t|
     t.string   "text"
     t.datetime "created_at", null: false
@@ -59,6 +68,12 @@ ActiveRecord::Schema.define(version: 20160329071126) do
     t.string   "email"
     t.string   "tel"
     t.string   "plan"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "prefectures", force: :cascade do |t|
+    t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

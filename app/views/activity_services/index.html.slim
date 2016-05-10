@@ -18,8 +18,8 @@
         tbody
           - @activity_services.each do |activity_service|
             tr
-              td = activity_service.plan
-              td = activity_service.category
+              td = activity_service.name
+              td = activity_service.category.name
               td
                 = image_tag(activity_service.photo, alt: '', size: '30x40')
               td = activity_service.amount

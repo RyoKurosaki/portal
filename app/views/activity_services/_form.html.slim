@@ -5,13 +5,22 @@
       ul
         - @activity_service.errors.full_messages.each do |message|
           li = message
-
+  .ajax-div
+    .field.form-group
+      = f.label :prefecture
+      - prefecture_options = Prefecture.order(:id).map { |c| [c.name, c.id, data: { children_path: prefecture_major_cities_path(c) }] }
+      = f.select :prefecture_id, prefecture_options, { include_blank: true }, class: 'select-parent'
+    .field.form-group
+      = f.label :city
+      - major_cities = @activity_service.prefecture.try(:major_cities) || []
+      - major_city_options = major_cities.map { |c| [c.name, c.id] }
+      = f.select :major_city_id, major_city_options, { include_blank: true }, class: 'select-children'
   .field.form-group
     = f.label :plan
-    = f.text_field :plan, class:'form-control'
+    = f.text_field :name, class:'form-control'
   .field.form-group
     = f.label :category
-    = f.collection_select :category, Category.all, :category, :category, class:'form-control'
+    = f.collection_select :category_id, Category.all, :id, :name, class:'form-control'
   .field.form-group
     = f.label :detail
     = f.text_area :detail, class:'form-control'

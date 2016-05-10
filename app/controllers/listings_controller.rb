@@ -12,8 +12,9 @@ class ListingsController < ApplicationController
   # GET /listings/1
   # GET /listings/1.json
   def show
-    @categories = Category.all
     @user = User.find_by_email(@listing.host_email)
+    @activity_service = ActivityService.new
+    @major_cities = MajorCity.none
   end
 
   # GET /listings/new
