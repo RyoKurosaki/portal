@@ -1,0 +1,10 @@
+.row
+  .col-sm-2
+  .col-sm-8
+    p
+      strong City:
+      = @major_city.name
+    = link_to 'Edit', edit_major_city_path(@major_city)
+    '|
+    = link_to 'Back', major_cities_path
+  .col-sm-2

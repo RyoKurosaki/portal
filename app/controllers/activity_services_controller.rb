@@ -75,11 +75,6 @@ class ActivityServicesController < ApplicationController
     end
   end
 
-  def ajax
-    category = Category.find(params[:id])
-    render json: category.activity_services.select(:id, :name)
-  end
-
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_activity_service

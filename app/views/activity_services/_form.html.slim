@@ -8,7 +8,7 @@
   .ajax-div
     .field.form-group
       = f.label :prefecture
-      - prefecture_options = Prefecture.order(:id).map { |c| [c.name, c.id, data: { children_path: prefecture_major_cities_path(c) }] }
+      - prefecture_options = Prefecture.order(:id).map { |c| [c.name, c.id, data: { children_path: ajax_prefecture_major_cities_path(c) }] }
       = f.select :prefecture_id, prefecture_options, { include_blank: true }, class: 'select-parent'
     .field.form-group
       = f.label :city

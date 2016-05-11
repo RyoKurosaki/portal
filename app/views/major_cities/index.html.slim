@@ -1,0 +1,27 @@
+.row
+  .col-sm-2
+  .col-sm-8
+    h1 Listing major_cities
+
+    .table-responsive
+      table class = 'table table-striped table-hover'
+        thead
+          tr
+            th Prefecture
+            th City
+            th
+            th
+
+        tbody
+          - @major_cities.each do |major_city|
+            tr
+              td = major_city.prefecture.name
+              td = major_city.name
+              td = link_to 'Show', major_city
+              td = link_to 'Edit', edit_major_city_path(major_city)
+              td = link_to 'Destroy', major_city, data: {:confirm => 'Are you sure?'}, :method => :delete
+
+    br
+
+    = link_to 'New Major city', new_major_city_path, class:'btn btn-default'
+  .col-sm-2
