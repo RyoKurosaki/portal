@@ -1,6 +1,6 @@
 class MajorCitiesController < ApplicationController
-  before_action :authenticate_user!, :check_admin_user
-  before_action :set_major_city, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, :check_admin_user, except: [:ajax]
+  before_action :set_major_city, only: [:edit, :update, :destroy]
 
   def ajax
     prefecture = Prefecture.find(params[:prefecture_id])
@@ -11,11 +11,6 @@ class MajorCitiesController < ApplicationController
   # GET /major_cities.json
   def index
     @major_cities = MajorCity.order("prefecture_id")
-  end
-
-  # GET /major_cities/1
-  # GET /major_cities/1.json
-  def show
   end
 
   # GET /major_cities/new

@@ -2,32 +2,34 @@
   .col-sm-2
   .col-sm-8
     h1 activity_services
-
-    .table-responsive
-      table class = 'table table-striped'
-        thead
-          tr
-            th Plan
-            th Category
-            th Photo
-            th Amount
-            th
-            th
-            th
-
-        tbody
-          - @activity_services.each do |activity_service|
+    - if @activity_services.blank?
+      | Sorry. There are no services with these conditions.
+    - else
+      .table-responsive
+        table class = 'table table-striped'
+          thead
             tr
-              td = activity_service.name
-              td = activity_service.category.name
-              td
-                = image_tag(activity_service.photo, alt: '', size: '30x40')
-              td = activity_service.amount
-              td = link_to 'Show', activity_service
-              td = link_to 'Edit', edit_activity_service_path(activity_service)
-              td = link_to 'Destroy', activity_service, data: {:confirm => 'Are you sure?'}, :method => :delete
+              th Plan
+              th Category
+              th Photo
+              th Amount
+              th
+              th
+              th
+
+          tbody
+            - @activity_services.each do |activity_service|
+              tr
+                td = activity_service.name
+                td = activity_service.category.name
+                td
+                  = image_tag(activity_service.photo, alt: '', size: '30x40')
+                td = activity_service.amount
+                td = link_to 'Show', activity_service
+                td = link_to 'Edit', edit_activity_service_path(activity_service)
+                td = link_to 'Destroy', activity_service, data: {:confirm => 'Are you sure?'}, :method => :delete
 
     br
-
     = link_to 'New Activity service', new_activity_service_path, class:'btn btn-default'
+    .mb20
   .col-sm-2

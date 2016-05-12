@@ -11,7 +11,7 @@
       strong Detail:
       = @activity_service.detail
     p
-      = image_tag(@activity_service.photo, alt: '', size: '240x320')
+      = image_tag(@activity_service.photo, alt: '', class: 'img-responsive')
     p
       strong Amount:
       = @activity_service.amount

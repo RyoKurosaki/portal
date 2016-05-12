@@ -10,7 +10,7 @@ Rails.application.routes.draw do
       end
     end
   end
-  resources :major_cities
+  resources :major_cities, except: [:show]
   resources :listings, :replace_id_with => 'access_token'
   devise_for :users
   root 'pages#index'

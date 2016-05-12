@@ -9,7 +9,7 @@
       = @listing.address+' '
       = link_to 'Open with Google Map', 'https://www.google.com/maps?q='+@listing.address, target: '_new'
     p
-      = image_tag(@listing.photo, alt: '', width: '320')
+      = image_tag(@listing.photo, alt: '', class: 'img-responsive')
     p
       strong Manual:
       = link_to 'manual', @listing.manual
@@ -51,8 +51,9 @@
           = f.collection_select :category_id, Category.all, :id, :name, include_blank: true
         .actions = f.submit :choose, class:'btn btn-default'
 
-    / - if user_signed_in?
-    = link_to 'Edit', edit_listing_path(@listing)
-    '|
-    = link_to 'Back', listings_path
+    - if user_signed_in?
+      = link_to 'Edit', edit_listing_path(@listing)
+      '|
+      = link_to 'Back', listings_path
+    .mb20
   .col-sm-2

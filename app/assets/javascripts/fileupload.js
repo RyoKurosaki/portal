@@ -17,8 +17,8 @@ $(document).ready(function() {
       replaceFileInput: false,
       imageOrientation: true,
       disableImageResize: false,
-      imageMaxWidth: 320,
-      imageMaxHeight: 480,
+      imageMaxWidth: 420,
+      imageMaxHeight: 560,
       progressall: function (e, data) {
         var progress = parseInt(data.loaded / data.total * 100, 10);
         progressBar.css('width', progress + '%')
