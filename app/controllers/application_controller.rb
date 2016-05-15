@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
     def check_admin_user
       unless current_user.admin?
         respond_to do |format|
-          format.html {redirect_to root_path, notice: 'You do not have an authority.' }
+          format.html {redirect_to root_path, alert: 'You do not have an authority.' }
         end
       end
     end

@@ -1,5 +1,5 @@
 class ActivityServicesController < ApplicationController
-  before_action :authenticate_user!, :check_admin_user
+  before_action :authenticate_user!, :check_admin_user, except: [:index, :show]
   before_action :set_activity_service, only: [:show, :edit, :update, :destroy]
   before_action :set_s3_direct_post, only: [:new, :edit, :create, :update]
 

@@ -8,10 +8,10 @@
       strong Category:
       = @activity_service.category.name
     p
+      = image_tag(@activity_service.photo, alt: '', class: 'img-responsive')
+    p
       strong Detail:
       = @activity_service.detail
-    p
-      = image_tag(@activity_service.photo, alt: '', class: 'img-responsive')
     p
       strong Amount:
       = @activity_service.amount
