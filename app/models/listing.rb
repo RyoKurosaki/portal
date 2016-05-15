@@ -3,6 +3,10 @@ class Listing < ActiveRecord::Base
   validates_presence_of :access_token
   after_initialize :set_access_token
 
+  validates :name, presence: true
+  validates :address, presence: true
+  validates :address_en, presence: true
+
   private
     def set_access_token
       self.access_token = self.access_token.blank? ? generate_access_token : self.access_token

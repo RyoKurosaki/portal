@@ -11,16 +11,17 @@
       - prefecture_options = Prefecture.order(:id).map { |c| [c.name, c.id, data: { children_path: ajax_prefecture_major_cities_path(c) }] }
       = f.select :prefecture_id, prefecture_options, { include_blank: true }, class: 'select-parent'
     .field.form-group
-      = f.label :city
+      = f.label :major_city
       - major_cities = @activity_service.prefecture.try(:major_cities) || []
       - major_city_options = major_cities.map { |c| [c.name, c.id] }
       = f.select :major_city_id, major_city_options, { include_blank: true }, class: 'select-children'
   .field.form-group
-    = f.label :plan
+    = f.label :name
+    |  プラン名
     = f.text_field :name, class:'form-control'
   .field.form-group
     = f.label :category
-    = f.collection_select :category_id, Category.all, :id, :name, class:'form-control'
+    = f.collection_select :category_id, Category.all, :id, :name, { include_blank: true }, class:'form-control'
   .field.form-group
     = f.label :detail
     = f.text_area :detail, class:'form-control'

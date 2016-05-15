@@ -7,12 +7,14 @@
           li = message
 
   .field.form-group
-    = f.label :category
+    = f.label :name
+    |  カテゴリー名
     = f.text_field :name, class:'form-control'
   .field.form-group
     = f.label :photo
     = f.file_field :photo, accept: 'image/*', class:'form-control'
   .field.form-group
     = f.label :detail
+    |  詳細
     = f.text_area :detail, class:'form-control'
   .actions = f.submit :submit, class:'btn btn-default'

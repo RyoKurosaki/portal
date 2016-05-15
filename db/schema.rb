@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160508122901) do
+ActiveRecord::Schema.define(version: 20160515102142) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(version: 20160508122901) do
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
     t.string   "host_email"
+    t.string   "address_en"
   end
 
   add_index "listings", ["access_token"], name: "index_listings_on_access_token", unique: true, using: :btree

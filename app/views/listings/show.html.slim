@@ -9,6 +9,9 @@
       = @listing.address+' '
       = link_to 'Open with Google Map', 'https://www.google.com/maps?q='+@listing.address, target: '_new'
     p
+      strong In English:
+      = @listing.address_en
+    p
       = image_tag(@listing.photo, alt: '', class: 'img-responsive')
     p
       strong Manual:
@@ -30,7 +33,7 @@
       = @user.line
     p
       strong Facebook Account:
-      = @user.facebook
+      = link_to @user.facebook, @user.facebook, target: '_new'
     p
       strong Services:
       br
