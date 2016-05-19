@@ -16,7 +16,7 @@
       strong Amount:
       = @activity_service.amount
 
-    = link_to 'Choose this', new_payment_path, class:'btn btn-default'
+    = link_to 'Choose this', new_payment_path(id: @activity_service.id), class:'btn btn-default'
     br
     - if user_signed_in? && current_user.admin?
       = link_to 'Edit', edit_activity_service_path(@activity_service)
