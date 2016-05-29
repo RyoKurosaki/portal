@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :apply_services, only: [:index, :show, :create, :destroy]
   resources :notices, except: [:show]
   resources :categories
   resources :activity_services

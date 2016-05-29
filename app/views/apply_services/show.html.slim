@@ -1,0 +1,21 @@
+.row
+  .col-sm-2
+  .col-sm-8
+    p
+      strong Name:
+      = @apply_service.name
+    p
+      strong Email:
+      = @apply_service.email
+    p
+      strong Tel:
+      = @apply_service.tel
+    p
+      strong Activity service:
+      = @apply_service.activity_service.name
+    p
+      strong Expected date:
+      = @apply_service.expected_date
+    - if user_signed_in? && current_user.admin?
+      = link_to 'Back', apply_services_path
+  .col-sm-2

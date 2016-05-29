@@ -23,6 +23,7 @@ class ActivityServicesController < ApplicationController
   # GET /activity_services/1
   # GET /activity_services/1.json
   def show
+    @apply_service = ApplyService.new
   end
 
   # GET /activity_services/new

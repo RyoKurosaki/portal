@@ -10,6 +10,7 @@ class PaymentsController < ApplicationController
     @payment = Payment.new(payment_params)
     customer = webpay.customer.create(card: params['webpay-token'])
     @payment.name = customer.active_card.name
+    @payment.customer_id = customer.id
     # 顧客情報を使って支払い
     webpay.charge.create(
       amount: @payment.activity_service.amount,
@@ -19,7 +20,7 @@ class PaymentsController < ApplicationController
 
     respond_to do |format|
       if @payment.save
-        format.html { redirect_to activity_services_path, notice: 'payment was successfully created.' }
+        format.html { redirect_to activity_services_path, notice: 'payment was successfully completed.' }
         format.json { render :show, status: :created, location: @payment }
       else
         format.html { render :new }

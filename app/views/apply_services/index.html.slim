@@ -1,0 +1,31 @@
+.row
+  .col-sm-2
+  .col-sm-8
+    h1 サービス申請一覧
+    .table-responsive
+      table class = 'table table-striped'
+        thead
+          tr
+            th Name
+            th Email
+            th Tel
+            th Activity service
+            th Expected date
+            th
+            th
+
+        tbody
+          - @apply_services.each do |apply_service|
+            tr
+              td = apply_service.name
+              td = apply_service.email
+              td = apply_service.tel
+              td = apply_service.activity_service.name
+              td = apply_service.expected_date
+              td = link_to 'Show', apply_service
+              td = link_to 'Destroy', apply_service, data: {:confirm => 'Are you sure?'}, :method => :delete
+
+    br
+
+    .mb20
+  .col-sm-2

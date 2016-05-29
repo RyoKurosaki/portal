@@ -19,4 +19,16 @@
 //= require z.jquery.fileupload-process
 //= require z.jquery.fileupload-image
 //= require bootstrap-sprockets
+//= require moment
+//= require bootstrap3-datetimepicker
 //= require_tree .
+
+
+var data = {'data-date-format': 'YYYY-MM-DD' };
+var ready = function(){
+  $('.datepicker').attr(data);
+  $('.datepicker').datetimepicker();
+};
+
+$(document).ready(ready);
+$(document).on('page:load', ready);

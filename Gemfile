@@ -24,6 +24,8 @@ gem 'bootstrap-sass'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
+gem 'rails-assets-momentjs', source: 'https://rails-assets.org'
+gem 'rails-assets-bootstrap3-datetimepicker', source: 'https://rails-assets.org'
 gem 'therubyracer', platforms: :ruby
 gem 'jquery-rails'
 gem 'jbuilder', '~> 2.0'
