@@ -1,5 +1,5 @@
 .row
-  .col-sm-2
+  .col-sm-1
   .col-sm-8
     h1 お知らせ
     .table-responsive
@@ -11,4 +11,6 @@
             tr
               td = notice.created_at.strftime("%Y/%m/%d")
               td = notice.text
-  .col-sm-2
+  .col-sm-3
+    - @ads.each do |ad|
+      = link_to image_tag(ad.thumbnail, alt: '', class: 'img-responsive'), ad.url, target: '_new'

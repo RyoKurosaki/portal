@@ -1,0 +1,19 @@
+.row
+  .col-sm-2
+  .col-sm-8
+    p
+      strong Name:
+      = @ad.name
+    p
+      strong Url:
+      = @ad.url
+    p
+      strong Corp:
+      = @ad.corp
+    p
+      = image_tag(@ad.thumbnail, alt: '', class: 'img-responsive')
+
+    = link_to 'Edit', edit_ad_path(@ad)
+    '|
+    = link_to 'Back', ads_path
+  .col-sm-2

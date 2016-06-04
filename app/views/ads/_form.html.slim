@@ -1,0 +1,25 @@
+= form_for @ad, html: { class: 'directUpload', data: { 'form-data' => (@s3_direct_post.fields), 'url' => @s3_direct_post.url, 'host' => URI.parse(@s3_direct_post.url).host } } do |f|
+  - if @ad.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@ad.errors.count, "error")} prohibited this ad from being saved:"
+      ul
+        - @ad.errors.full_messages.each do |message|
+          li = message
+
+  .field.form-group
+    = f.label :name
+    |  広告名
+    = f.text_field :name, class:'form-control'
+  .field.form-group
+    = f.label :url
+    |  広告クリック後の遷移先URL
+    = f.text_field :url, class:'form-control'
+  .field.form-group
+    = f.label :corp
+    |  広告者
+    = f.text_field :corp, class:'form-control'
+  .field.form-group
+    = f.label :thumbnail
+    |  サムネイル
+    = f.file_field :thumbnail, accept: 'image/*', class:'form-control'
+  .actions = f.submit :submit, class:'btn btn-default'

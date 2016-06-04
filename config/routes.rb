@@ -1,6 +1,7 @@
 require 'sidekiq/web'
 
 Rails.application.routes.draw do
+  resources :ads
   mount Sidekiq::Web => '/sidekiq'
 
   resources :apply_services, only: [:index, :show, :create, :destroy, :accept, :decline] do

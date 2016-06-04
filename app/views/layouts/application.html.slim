@@ -29,6 +29,7 @@ html
                   li = link_to '街', major_cities_path
                   li = link_to 'サービス', activity_services_path
                   li = link_to 'お知らせ', notices_path
+                  li = link_to '広告', ads_path
             ul class = 'nav navbar-nav navbar-right'
               - if user_signed_in?
                 li = link_to current_user.name, root_path

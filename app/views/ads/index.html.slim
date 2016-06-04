@@ -1,0 +1,31 @@
+.row
+  .col-sm-2
+  .col-sm-8
+    h1 広告一覧
+
+    .table-responsive
+      table class = 'table table-striped table-hover'
+        thead
+          tr
+            th 広告名
+            th 広告者
+            th サムネイル
+            th
+            th
+            th
+
+        tbody
+          - @ads.each do |ad|
+            tr
+              td = ad.name
+              td = ad.corp
+              td
+                = image_tag(ad.thumbnail, alt: '', size: '40x30')
+              td = link_to 'Show', ad
+              td = link_to 'Edit', edit_ad_path(ad)
+              td = link_to 'Destroy', ad, data: {:confirm => 'Are you sure?'}, :method => :delete
+
+    br
+
+    = link_to 'New Ad', new_ad_path, class:'btn btn-default'
+  .col-sm-2
