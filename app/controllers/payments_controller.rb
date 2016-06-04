@@ -2,14 +2,14 @@ require 'webpay'
 
 class PaymentsController < ApplicationController
   def new
-    @payment = Payment.new(activity_service_id: params['id'])
+    @apply_service = ApplyService.find(params[:id])
+    @payment = Payment.new(activity_service_id: @apply_service.activity_service_id)
   end
 
   def purchase
     webpay = WebPay.new(ENV['webpay_secret_key'])
     @payment = Payment.new(payment_params)
     customer = webpay.customer.create(card: params['webpay-token'])
-    @payment.name = customer.active_card.name
     @payment.customer_id = customer.id
     # 顧客情報を使って支払い
     webpay.charge.create(
@@ -51,6 +51,6 @@ class PaymentsController < ApplicationController
 
   private
     def payment_params
-      params.require(:payment).permit(:email, :tel, :activity_service_id)
+      params.require(:payment).permit(:name, :email, :tel, :activity_service_id)
     end
 end

@@ -1,6 +1,14 @@
-Rails.application.routes.draw do
+require 'sidekiq/web'
 
-  resources :apply_services, only: [:index, :show, :create, :destroy]
+Rails.application.routes.draw do
+  mount Sidekiq::Web => '/sidekiq'
+
+  resources :apply_services, only: [:index, :show, :create, :destroy, :accept, :decline] do
+    member do
+      get 'accept'
+      get 'decline'
+    end
+  end
   resources :notices, except: [:show]
   resources :categories
   resources :activity_services

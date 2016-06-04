@@ -1,6 +1,6 @@
 class ApplyServicesController < ApplicationController
   before_action :authenticate_user!, :check_admin_user, except: [:show]
-  before_action :set_apply_service, only: [:show, :destroy]
+  before_action :set_apply_service, only: [:show, :destroy, :accept, :decline]
 
   # GET /apply_services
   # GET /apply_services.json
@@ -20,10 +20,27 @@ class ApplyServicesController < ApplicationController
 
     respond_to do |format|
       if @apply_service.save
+        AppliedMailerJob.perform_later(@apply_service)
         format.html { redirect_to @apply_service, notice: 'your applying was successfully sent.' }
       else
         format.html { render :new }
       end
+    end
+  end
+
+  def accept
+    @apply_service.update(accept: true)
+    respond_to do |format|
+      AcceptedMailerJob.perform_later(@apply_service)
+      format.html { redirect_to apply_services_url, notice: 'The applying was accepted.' }
+    end
+  end
+
+  def decline
+    @apply_service.update(accept: false)
+    respond_to do |format|
+      DeclinedMailerJob.perform_later(@apply_service)
+      format.html { redirect_to apply_services_url, notice: 'The applying was accepted.' }
     end
   end
 

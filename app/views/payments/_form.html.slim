@@ -6,6 +6,9 @@
         - @payment.errors.full_messages.each do |message|
           li = message
   = f.hidden_field :activity_service_id, value: @payment.activity_service_id
+  = f.hidden_field :name, value: @apply_service.name
+  = f.hidden_field :email, value: @apply_service.email
+  = f.hidden_field :tel, value: @apply_service.tel
   p
     strong Plan:
     = @payment.activity_service.name
@@ -16,12 +19,5 @@
   div
     = javascript_include_tag "https://checkout.webpay.jp/v3/", \
     class: 'webpay-button', :'data-text' => 'Enter your card info', \
-    :'data-submit-text' => 'Confirm the information', :'data-key' => "#{ENV['webpay_public_key']}",\
-    :'data-lang' => 'en', :'data-partial' => 'true'
-  .field.form-group
-    = f.label :email
-    = f.email_field :email, class:'form-control'
-  .field.form-group
-    = f.label :tel
-    = f.text_field :tel, class:'form-control'
-  .actions = f.submit :submit, class:'btn btn-default'
+    :'data-submit-text' => 'Pay', :'data-key' => "#{ENV['webpay_public_key']}",\
+    :'data-lang' => 'en', :'data-partial' => 'false'

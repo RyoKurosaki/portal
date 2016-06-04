@@ -17,5 +17,9 @@
       strong Expected date:
       = @apply_service.expected_date
     - if user_signed_in? && current_user.admin?
+      = link_to 'Accept', accept_apply_service_path(@apply_service.id)
+      br
+      = link_to 'Decline', decline_apply_service_path(@apply_service.id), data: {:confirm => 'Are you sure?'}
+      br
       = link_to 'Back', apply_services_path
   .col-sm-2

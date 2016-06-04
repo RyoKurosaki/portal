@@ -1,0 +1,8 @@
+Hi. <%= @apply_services.name %>
+
+Your applying was accepted.
+
+Please pay here.
+<%= new_payment_url(id: @apply_services.id) %>
+
+Thank you.

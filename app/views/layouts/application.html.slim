@@ -22,12 +22,13 @@ html
             ul class = 'nav navbar-nav'
               - if user_signed_in?
                 li = link_to 'ホーム', root_path
-                li = link_to 'listings', listings_path
+                li = link_to 'リスティング', listings_path
                 - if current_user.admin?
-                  li = link_to 'categories', categories_path
-                  li = link_to 'services', activity_services_path
-                  li = link_to 'notices', notices_path
-                  li = link_to 'cities', major_cities_path
+                  li = link_to '申請', apply_services_path
+                  li = link_to 'カテゴリ', categories_path
+                  li = link_to '街', major_cities_path
+                  li = link_to 'サービス', activity_services_path
+                  li = link_to 'お知らせ', notices_path
             ul class = 'nav navbar-nav navbar-right'
               - if user_signed_in?
                 li = link_to current_user.name, root_path
