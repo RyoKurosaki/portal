@@ -1,6 +1,10 @@
 require 'webpay'
 
 class PaymentsController < ApplicationController
+  def index
+    @payments = Payment.all
+  end
+
   def new
     @apply_service = ApplyService.find(params[:id])
     @payment = Payment.new(activity_service_id: @apply_service.activity_service_id)

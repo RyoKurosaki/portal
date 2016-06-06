@@ -25,7 +25,7 @@ Rails.application.routes.draw do
   devise_for :users
   root 'pages#index'
   get 'pages/index'
-  resources :payments, only: [:new] do
+  resources :payments, only: [:index, :new] do
     collection do
       post 'purchase'
     end
