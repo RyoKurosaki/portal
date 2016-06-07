@@ -6,15 +6,19 @@ class ActivityServicesController < ApplicationController
   # GET /activity_services
   # GET /activity_services.json
   def index
+    @activity_service = ActivityService.new
     @activity_services = ActivityService.all
     unless params[:activity_service].nil?
       unless params[:activity_service][:prefecture_id].blank?
+        @activity_service.prefecture_id = params[:activity_service][:prefecture_id]
         @activity_services = @activity_services.where("prefecture_id = ?", params[:activity_service][:prefecture_id])
       end
       unless params[:activity_service][:major_city_id].blank?
+        @activity_service.major_city_id = params[:activity_service][:major_city_id]
         @activity_services = @activity_services.where("major_city_id = ?", params[:activity_service][:major_city_id])
       end
       unless params[:activity_service][:category_id].blank?
+        @activity_service.category_id = params[:activity_service][:category_id]
         @activity_services = @activity_services.where("category_id = ?", params[:activity_service][:category_id])
       end
     end
