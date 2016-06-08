@@ -21,13 +21,13 @@
   .field.form-group
     = f.label :photo
     |  (物件外観)
-    = f.file_field :photo, accept: 'image/*', class:'form-control'
+    = f.file_field :photo, accept: 'image/*', class:'js-img-upload'
   .field.form-group
     = f.label :manual
     |  (ハウスマニュアルPDF)
-    = f.file_field :manual, class:'form-control'
+    = f.file_field :manual, class:'js-pdf-upload'
   .field.form-group
     = f.label :map
     |  (ルートガイドPDF)
-    = f.file_field :map, class:'form-control'
+    = f.file_field :map, class:'js-pdf-upload'
   .actions = f.submit :submit, class:'btn btn-default'

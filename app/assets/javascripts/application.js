@@ -21,6 +21,7 @@
 //= require bootstrap-sprockets
 //= require moment
 //= require bootstrap3-datetimepicker
+//= require bootstrap-fileinput
 //= require_tree .
 
 

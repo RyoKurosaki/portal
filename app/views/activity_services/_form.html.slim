@@ -9,12 +9,12 @@
     .field.form-group
       = f.label :prefecture
       - prefecture_options = Prefecture.order(:id).map { |c| [c.name, c.id, data: { children_path: ajax_prefecture_major_cities_path(c) }] }
-      = f.select :prefecture_id, prefecture_options, { include_blank: true }, class: 'select-parent'
+      = f.select :prefecture_id, prefecture_options, { include_blank: true }, class: 'select-parent form-control'
     .field.form-group
       = f.label :major_city
       - major_cities = @activity_service.prefecture.try(:major_cities) || []
       - major_city_options = major_cities.map { |c| [c.name, c.id] }
-      = f.select :major_city_id, major_city_options, { include_blank: true }, class: 'select-children'
+      = f.select :major_city_id, major_city_options, { include_blank: true }, class: 'select-children form-control'
   .field.form-group
     = f.label :name
     |  プラン名
@@ -27,7 +27,7 @@
     = f.text_area :detail, class:'form-control'
   .field.form-group
     = f.label :photo
-    = f.file_field :photo, accept: 'image/*', class:'form-control'
+    = f.file_field :photo, accept: 'image/*', class:'js-img-upload'
   .field.form-group
     = f.label :amount
     = f.text_field :amount, class:'form-control'

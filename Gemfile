@@ -20,12 +20,11 @@ gem 'resources_id_replace'
 gem 'aws-sdk', '~> 2'
 gem 'webpay', '~>3.2'
 
+gem 'compass-rails'
 gem 'bootstrap-sass'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
-gem 'rails-assets-momentjs', source: 'https://rails-assets.org'
-gem 'rails-assets-bootstrap3-datetimepicker', source: 'https://rails-assets.org'
 gem 'therubyracer', platforms: :ruby
 gem 'jquery-rails'
 gem 'jbuilder', '~> 2.0'
@@ -51,6 +50,7 @@ group :production do
 end
 
 source 'https://rails-assets.org' do
-  gem 'rails-assets-fullcalendar'
-  gem 'rails-assets-fullcalendar-scheduler'
+  gem 'rails-assets-bootstrap-fileinput'
+  gem 'rails-assets-momentjs'
+  gem 'rails-assets-bootstrap3-datetimepicker'
 end
