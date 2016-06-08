@@ -48,10 +48,8 @@ class ActivityServicesController < ApplicationController
     respond_to do |format|
       if @activity_service.save
         format.html { redirect_to @activity_service, notice: 'Activity service was successfully created.' }
-        format.json { render :show, status: :created, location: @activity_service }
       else
         format.html { render :new }
-        format.json { render json: @activity_service.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -62,10 +60,8 @@ class ActivityServicesController < ApplicationController
     respond_to do |format|
       if @activity_service.update(activity_service_params)
         format.html { redirect_to @activity_service, notice: 'Activity service was successfully updated.' }
-        format.json { render :show, status: :ok, location: @activity_service }
       else
         format.html { render :edit }
-        format.json { render json: @activity_service.errors, status: :unprocessable_entity }
       end
     end
   end

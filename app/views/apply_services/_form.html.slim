@@ -1,0 +1,25 @@
+| If you want to do this plan, please apply this with your information.
+= form_for @apply_service do |f|
+  - if @apply_service.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@apply_service.errors.count, "error")} prohibited this apply_service from being saved:"
+      ul
+        - @apply_service.errors.full_messages.each do |message|
+          li = message
+  = f.hidden_field :activity_service_id, value: activity_service.id
+  .field.form-group
+    = f.label :name
+    = f.text_field :name, class:'form-control'
+  .field.form-group
+    = f.label :email
+    = f.email_field :email, class:'form-control'
+  .field.form-group
+    = f.label :tel
+    = f.text_field :tel, class:'form-control'
+  .field.form-group
+    = f.label :expected_date
+    .input-group.date.datepicker
+      = f.text_field :expected_date, readonly: true, data: { :date_format => 'YYYY/MM/DD' }, class:'form-control'
+      span.input-group-addon
+        span.glyphicon.glyphicon-calendar
+  .actions = f.submit :apply, class:'btn btn-default'

@@ -2,7 +2,7 @@ jp:
   number:
     currency:
       format:
-        unit: "円"
+        unit: "JPY"
         format: "%n%u"
         negative_format: "-%n%u"
         precision: 0

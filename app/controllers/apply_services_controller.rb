@@ -23,7 +23,8 @@ class ApplyServicesController < ApplicationController
         AppliedMailerJob.perform_later(@apply_service)
         format.html { redirect_to @apply_service, notice: 'your applying was successfully sent.' }
       else
-        format.html { render :new }
+        @activity_service = ActivityService.find(@apply_service.activity_service_id)
+        format.html { render template: 'activity_services/show' }
       end
     end
   end

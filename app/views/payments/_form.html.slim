@@ -14,8 +14,7 @@
     = @payment.activity_service.name
   p
     strong Amount:
-    = @payment.activity_service.amount
-    |  JPY
+    = number_to_currency(@payment.activity_service.amount, :locale => 'jp')
   div
     = javascript_include_tag "https://checkout.webpay.jp/v3/", \
     class: 'webpay-button', :'data-text' => 'Enter your card info', \

@@ -25,7 +25,6 @@ class PaymentsController < ApplicationController
     respond_to do |format|
       if @payment.save
         format.html { redirect_to activity_services_path, notice: 'payment was successfully completed.' }
-        format.json { render :show, status: :created, location: @payment }
       else
         format.html { render :new }
       end

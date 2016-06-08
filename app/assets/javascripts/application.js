@@ -27,7 +27,10 @@
 var data = {'data-date-format': 'YYYY-MM-DD' };
 var ready = function(){
   $('.datepicker').attr(data);
-  $('.datepicker').datetimepicker();
+  $('.datepicker').datetimepicker({
+    ignoreReadonly: true,
+    minDate: new Date()
+  });
 };
 
 $(document).ready(ready);
