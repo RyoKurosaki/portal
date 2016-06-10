@@ -16,9 +16,9 @@
         tbody
           - @payments.each do |payment|
             tr
-              td = payment.name
-              td = payment.email
-              td = payment.tel
+              td = payment.apply_service.name
+              td = payment.apply_service.email
+              td = payment.apply_service.tel
               td = payment.activity_service.name
               td = number_to_currency(payment.activity_service.amount, :locale => 'jp')
 

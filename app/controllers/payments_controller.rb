@@ -7,7 +7,7 @@ class PaymentsController < ApplicationController
 
   def new
     @apply_service = ApplyService.find(params[:id])
-    @payment = Payment.new(activity_service_id: @apply_service.activity_service_id)
+    @payment = Payment.new(activity_service_id: @apply_service.activity_service_id, apply_service_id: params[:id])
   end
 
   def purchase
@@ -37,6 +37,8 @@ class PaymentsController < ApplicationController
     when 'buyer'
       # カードエラーなど、購入者に原因がある
       # エラーメッセージをそのまま表示するのがわかりやすい
+      @payment.errors[:base] << e.message
+      render :new
     when 'insufficient'
       # 実装ミスに起因する
     when 'missing'
@@ -54,6 +56,6 @@ class PaymentsController < ApplicationController
 
   private
     def payment_params
-      params.require(:payment).permit(:name, :email, :tel, :activity_service_id)
+      params.require(:payment).permit(:activity_service_id, :apply_service_id)
     end
 end

@@ -6,9 +6,7 @@
         - @payment.errors.full_messages.each do |message|
           li = message
   = f.hidden_field :activity_service_id, value: @payment.activity_service_id
-  = f.hidden_field :name, value: @apply_service.name
-  = f.hidden_field :email, value: @apply_service.email
-  = f.hidden_field :tel, value: @apply_service.tel
+  = f.hidden_field :apply_service_id, value: @payment.apply_service_id
   p
     strong Plan:
     = @payment.activity_service.name

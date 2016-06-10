@@ -7,7 +7,7 @@
           li = message
   .field.form-group
     = f.label :prefecture
-    = f.collection_select :prefecture_id, Prefecture.all, :id, :name, include_blank: true
+    = f.collection_select :prefecture_id, Prefecture.all, :id, :name, { include_blank: true }, { class:'form-control' }
   .field.form-group
     = f.label :name
     = f.text_field :name, class:'form-control'
