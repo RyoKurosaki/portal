@@ -16,12 +16,32 @@
       - major_city_options = major_cities.map { |c| [c.name, c.id] }
       = f.select :major_city_id, major_city_options, { include_blank: true }, class: 'select-children form-control'
   .field.form-group
+    = f.label :address
+    |  住所
+    = f.text_field :address, class:'form-control'
+  .field.form-group
     = f.label :name
     |  プラン名
     = f.text_field :name, class:'form-control'
   .field.form-group
     = f.label :category
     = f.collection_select :category_id, Category.all, :id, :name, { include_blank: true }, class:'form-control'
+  .row
+    .col-sm-4
+      .field.form-group
+        = f.label :start_time_at
+        .input-group.date#checkin
+          = f.text_field :start_time_at, readonly: true, data: { :date_format => 'hh:00 A' }, class:'form-control'
+          span.input-group-addon
+            span.glyphicon.glyphicon-time
+    .col-sm-4
+      .field.form-group
+        = f.label :end_time_at
+        .input-group.date#checkout
+          = f.text_field :end_time_at, readonly: true, data: { :date_format => 'hh:00 A' }, class:'form-control'
+          span.input-group-addon
+            span.glyphicon.glyphicon-time
+    .col-sm-4
   .field.form-group
     = f.label :detail
     = f.text_area :detail, class:'form-control'

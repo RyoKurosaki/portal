@@ -84,6 +84,6 @@ class ActivityServicesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def activity_service_params
-      params.require(:activity_service).permit(:name, :category_id, :detail, :photo, :amount, :prefecture_id, :major_city_id)
+      params.require(:activity_service).permit(:name, :category_id, :detail, :photo, :amount, :prefecture_id, :major_city_id, :address, :start_time_at, :end_time_at)
     end
 end

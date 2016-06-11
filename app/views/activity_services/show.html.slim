@@ -13,6 +13,11 @@
       strong Detail:
       = @activity_service.detail
     p
+      strong Busness hours:
+      = @activity_service.start_time_at.to_s(:time)
+      | ~
+      = @activity_service.end_time_at.to_s(:time)
+    p
       strong Amount:
       = number_to_currency(@activity_service.amount, :locale => 'jp')
     - unless @activity_service.amount.blank?
