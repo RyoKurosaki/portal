@@ -30,4 +30,27 @@
     = f.label :map
     |  (ルートガイドPDF)
     = f.file_field :map, class:'js-pdf-upload'
+  .row
+    .col-sm-4
+      .field.form-group
+        = f.label :checkin
+        .input-group.date#checkin
+          = f.text_field :checkin, readonly: true, data: { :date_format => 'hh:00 A' }, class:'form-control'
+          span.input-group-addon
+            span.glyphicon.glyphicon-time
+    .col-sm-4
+      .field.form-group
+        = f.label :checkout
+        .input-group.date#checkout
+          = f.text_field :checkout, readonly: true, data: { :date_format => 'hh:00 A' }, class:'form-control'
+          span.input-group-addon
+            span.glyphicon.glyphicon-time
+    .col-sm-4
+  .field.form-group
+    = f.label :house_rule
+    = f.text_area :house_rule, { class:'form-control' }
+  .field.form-group
+    = f.label :question
+    |  (よくある質問)
+    = f.text_area :question, { class:'form-control' }
   .actions = f.submit :submit, class:'btn btn-default'

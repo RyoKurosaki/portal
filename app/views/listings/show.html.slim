@@ -14,11 +14,23 @@
     p
       = image_tag(@listing.photo, alt: '', class: 'img-responsive')
     p
+      strong Check In:
+      = @listing.checkin
+    p
+      strong Check Out:
+      = @listing.checkout
+    p
       strong Manual:
       = link_to 'manual', @listing.manual
     p
       strong Map:
       = link_to 'map', @listing.map
+    p
+      strong House Rule:
+      = simple_format(h @listing.house_rule)
+    p
+      strong Common Question:
+      = simple_format(h @listing.question)
     p
       strong Host Name:
       = @user.name
