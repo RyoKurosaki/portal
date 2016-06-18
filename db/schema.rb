@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160611094644) do
+ActiveRecord::Schema.define(version: 20160612085607) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -98,6 +98,8 @@ ActiveRecord::Schema.define(version: 20160611094644) do
     t.string   "customer_id"
     t.string   "apply_service_id"
   end
+
+  add_index "payments", ["apply_service_id"], name: "index_payments_on_apply_service_id", unique: true, using: :btree
 
   create_table "prefectures", force: :cascade do |t|
     t.string   "name"
