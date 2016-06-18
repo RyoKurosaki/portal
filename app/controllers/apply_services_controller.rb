@@ -62,6 +62,6 @@ class ApplyServicesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def apply_service_params
-      params.require(:apply_service).permit(:name, :email, :tel, :activity_service_id, :expected_date)
+      params.require(:apply_service).permit(:name, :email, :tel, :activity_service_id, :expected_date, :expected_time, :note)
     end
 end

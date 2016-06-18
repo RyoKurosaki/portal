@@ -7,6 +7,8 @@
         - @apply_service.errors.full_messages.each do |message|
           li = message
   = f.hidden_field :activity_service_id, value: activity_service.id
+  = hidden_field :activity_service, :start_time_at
+  = hidden_field :activity_service, :end_time_at
   .field.form-group
     = f.label :name
     = f.text_field :name, class:'form-control'
@@ -16,10 +18,22 @@
   .field.form-group
     = f.label :tel
     = f.text_field :tel, class:'form-control'
+  .row
+    .col-sm-6
+      .field.form-group
+        = f.label :expected_date
+        .input-group.date.datepicker
+          = f.text_field :expected_date, readonly: true, data: { :date_format => 'YYYY/MM/DD' }, class:'form-control'
+          span.input-group-addon
+            span.glyphicon.glyphicon-calendar
+    .col-sm-6
+      .field.form-group
+        = f.label :expected_time
+        .input-group.date#expectedtime
+          = f.text_field :expected_time, readonly: true, data: { :date_format => 'hh:00 A' }, class:'form-control'
+          span.input-group-addon
+            span.glyphicon.glyphicon-time
   .field.form-group
-    = f.label :expected_date
-    .input-group.date.datepicker
-      = f.text_field :expected_date, readonly: true, data: { :date_format => 'YYYY/MM/DD' }, class:'form-control'
-      span.input-group-addon
-        span.glyphicon.glyphicon-calendar
+    = f.label :note
+    = f.text_area :note, class:'form-control'
   .actions = f.submit :apply, class:'btn btn-default'
