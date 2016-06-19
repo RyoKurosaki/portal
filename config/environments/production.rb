@@ -25,6 +25,7 @@ Rails.application.configure do
     :user_name      => ENV['LOLIPOP_MAIL_USERNAME'],
     :password       => ENV['LOLIPOP_MAIL_PASSWORD'],
     :domain         => 'makera.co.jp',
-    :enable_starttls_auto => true
+    :enable_starttls_auto => true,
+    :tls            => true
   }
 end
