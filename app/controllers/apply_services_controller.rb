@@ -1,5 +1,5 @@
 class ApplyServicesController < ApplicationController
-  before_action :authenticate_user!, :check_admin_user, except: [:show]
+  before_action :authenticate_user!, :check_admin_user, except: [:show, :create]
   before_action :set_apply_service, only: [:show, :destroy, :accept, :decline]
 
   # GET /apply_services
