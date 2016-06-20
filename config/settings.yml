@@ -11,3 +11,5 @@ production:
   <<: *default
   aws_bucket: makera-portal
   compass_email: makera1412@gmail.com
+  lolipop_mail_password: soccer1A
+  lolipop_mail_username: info@makera.co.jp

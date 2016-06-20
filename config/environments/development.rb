@@ -21,7 +21,7 @@ Rails.application.configure do
   ActionMailer::Base.smtp_settings = {
     :address        => 'smtp.lolipop.jp',
     :port           => '465',
-    :authentication => :login,
+    :authentication => :plain,
     :user_name      => 'info@makera.co.jp',
     :password       => 'soccer1A',
     :domain         => 'makera.co.jp',
