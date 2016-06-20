@@ -21,11 +21,12 @@ Rails.application.configure do
   ActionMailer::Base.smtp_settings = {
     :address        => 'smtp.lolipop.jp',
     :port           => '465',
-    :authentication => :plain,
+    :authentication => :login,
     :user_name      => 'info@makera.co.jp',
     :password       => 'soccer1A',
     :domain         => 'makera.co.jp',
     :enable_starttls_auto => true,
+    :ssl            => true,
     :tls            => true
   }
   # Print deprecation notices to the Rails logger.
