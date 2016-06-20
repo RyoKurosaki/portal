@@ -10,3 +10,4 @@ development:
 production:
   <<: *default
   aws_bucket: makera-portal
+  compass_email: makera1412@gmail.com
