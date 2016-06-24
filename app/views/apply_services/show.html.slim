@@ -16,6 +16,8 @@
     p
       strong Expected date:
       = @apply_service.expected_date
+    = link_to 'Back to services', activity_services_path
+    br
     - if user_signed_in? && current_user.admin?
       = link_to 'Accept', accept_apply_service_path(@apply_service.id)
       br

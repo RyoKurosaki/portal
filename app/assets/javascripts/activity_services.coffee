@@ -9,3 +9,9 @@ $ ->
     ignoreReadonly: true
     defaultDate: activity_service_start_time_at
     disabledTimeIntervals: [[moment({ h: 0 }), moment({ h: start_time_at })],[moment({ h: end_time_at }), moment({ h: 24 })]]
+  $('#starttime').datetimepicker
+    ignoreReadonly: true
+    defaultDate: moment({ h: 10 })
+  $('#endtime').datetimepicker
+    ignoreReadonly: true
+    defaultDate: moment({ h: 20 })

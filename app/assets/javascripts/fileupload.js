@@ -17,6 +17,8 @@ $(document).ready(function() {
       replaceFileInput: false,
       imageOrientation: true,
       disableImageResize: false,
+      processData: false,
+      contentType: false,
       imageMaxWidth: 420,
       imageMaxHeight: 560,
       progressall: function (e, data) {
@@ -27,7 +29,7 @@ $(document).ready(function() {
         submitButton.prop('disabled', true);
 
         progressBar.
-          css('background', 'green').
+          css('background', '#A9D0F5').
           css('display', 'block').
           css('width', '0%').
           text("Loading...");

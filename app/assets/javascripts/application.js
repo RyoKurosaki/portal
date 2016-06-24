@@ -32,14 +32,6 @@ var ready = function(){
     ignoreReadonly: true,
     minDate: new Date()
   });
-  $('#checkin').datetimepicker({
-    ignoreReadonly: true,
-    defaultDate: moment([2016, 01, 01, 11, 0])
-  });
-  $('#checkout').datetimepicker({
-    ignoreReadonly: true,
-    defaultDate: moment([2016, 01, 01, 15, 0])
-  });
 };
 
 $(document).ready(ready);

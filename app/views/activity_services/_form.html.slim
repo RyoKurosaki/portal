@@ -30,14 +30,14 @@
     .col-sm-4
       .field.form-group
         = f.label :start_time_at
-        .input-group.date#checkin
+        .input-group.date#starttime
           = f.text_field :start_time_at, readonly: true, data: { :date_format => 'hh:00 A' }, class:'form-control'
           span.input-group-addon
             span.glyphicon.glyphicon-time
     .col-sm-4
       .field.form-group
         = f.label :end_time_at
-        .input-group.date#checkout
+        .input-group.date#endtime
           = f.text_field :end_time_at, readonly: true, data: { :date_format => 'hh:00 A' }, class:'form-control'
           span.input-group-addon
             span.glyphicon.glyphicon-time
