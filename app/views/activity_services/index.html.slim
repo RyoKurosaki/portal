@@ -33,8 +33,6 @@
             tr
               th Plan
               th Category
-              th Photo
-              th Amount
               th
               - if user_signed_in? && current_user.admin?
                 th
@@ -45,10 +43,7 @@
               tr
                 td = activity_service.name
                 td = activity_service.category.name
-                td
-                  = image_tag(activity_service.photo, alt: '', size: '30x40')
-                td = number_to_currency(activity_service.amount, :locale => 'jp')
-                td = link_to 'Show', activity_service
+                td = link_to 'Show', activity_service.url
                 - if user_signed_in? && current_user.admin?
                   td = link_to 'Edit', edit_activity_service_path(activity_service)
                   td = link_to 'Destroy', activity_service, data: {:confirm => 'Are you sure?'}, :method => :delete

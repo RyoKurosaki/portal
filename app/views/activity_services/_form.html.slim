@@ -16,39 +16,16 @@
       - major_city_options = major_cities.map { |c| [c.name, c.id] }
       = f.select :major_city_id, major_city_options, { include_blank: true }, class: 'select-children form-control'
   .field.form-group
-    = f.label :address
-    |  住所
-    = f.text_field :address, class:'form-control'
+    = f.label :category
+    = f.collection_select :category_id, Category.all, :id, :name, { include_blank: true }, class:'form-control'
   .field.form-group
     = f.label :name
     |  プラン名
     = f.text_field :name, class:'form-control'
   .field.form-group
-    = f.label :category
-    = f.collection_select :category_id, Category.all, :id, :name, { include_blank: true }, class:'form-control'
-  .row
-    .col-sm-4
-      .field.form-group
-        = f.label :start_time_at
-        .input-group.date#starttime
-          = f.text_field :start_time_at, readonly: true, data: { :date_format => 'hh:00 A' }, class:'form-control'
-          span.input-group-addon
-            span.glyphicon.glyphicon-time
-    .col-sm-4
-      .field.form-group
-        = f.label :end_time_at
-        .input-group.date#endtime
-          = f.text_field :end_time_at, readonly: true, data: { :date_format => 'hh:00 A' }, class:'form-control'
-          span.input-group-addon
-            span.glyphicon.glyphicon-time
-    .col-sm-4
-  .field.form-group
     = f.label :detail
     = f.text_area :detail, class:'form-control'
   .field.form-group
-    = f.label :photo
-    = f.file_field :photo, accept: 'image/*', class:'js-img-upload'
-  .field.form-group
-    = f.label :amount
-    = f.text_field :amount, class:'form-control'
+    = f.label :url
+    = f.text_field :url, class:'form-control'
   .actions = f.submit :submit, class:'btn btn-default'
