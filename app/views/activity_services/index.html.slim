@@ -31,8 +31,9 @@
         table class = 'table table-striped'
           thead
             tr
-              th Plan
+              th Name
               th Category
+              th detail
               th
               - if user_signed_in? && current_user.admin?
                 th
@@ -43,7 +44,8 @@
               tr
                 td = activity_service.name
                 td = activity_service.category.name
-                td = link_to 'Show', activity_service.url
+                td = activity_service.detail
+                td = link_to 'Show', activity_service.url, target: "_blank"
                 - if user_signed_in? && current_user.admin?
                   td = link_to 'Edit', edit_activity_service_path(activity_service)
                   td = link_to 'Destroy', activity_service, data: {:confirm => 'Are you sure?'}, :method => :delete
