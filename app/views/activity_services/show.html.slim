@@ -7,22 +7,25 @@
     p
       strong Category:
       = @activity_service.category.name
-    p
-      = image_tag(@activity_service.photo, alt: '', class: 'img-responsive')
+    / p
+    /   = image_tag(@activity_service.photo, alt: '', class: 'img-responsive')
     p
       strong Detail:
       = @activity_service.detail
     p
-      strong Busness hours:
-      = @activity_service.start_time_at.to_s(:time)
-      | ~
-      = @activity_service.end_time_at.to_s(:time)
-    p
-      strong Amount:
-      = number_to_currency(@activity_service.amount, :locale => 'jp')
-    - unless @activity_service.amount.blank?
-      br
-      == render 'apply_services/form', activity_service: @activity_service
+      strong URL:
+      = @activity_service.url
+    / p
+    /   strong Busness hours:
+    /   = @activity_service.start_time_at.to_s(:time)
+    /   | ~
+    /   = @activity_service.end_time_at.to_s(:time)
+    / p
+    /   strong Amount:
+    /   = number_to_currency(@activity_service.amount, :locale => 'jp')
+    / - unless @activity_service.amount.blank?
+    /   br
+    /   == render 'apply_services/form', activity_service: @activity_service
 
     br
     - if user_signed_in? && current_user.admin?
