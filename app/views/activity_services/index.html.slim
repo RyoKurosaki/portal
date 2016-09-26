@@ -24,31 +24,26 @@
         .col-sm-12
           .actions = f.submit :choose, class:'btn btn-default'
     h2 Search result
-    - if @activity_services.blank?
-      | Sorry. There are no services with these conditions.
-    - else
-      .table-responsive
-        table class = 'table table-striped'
-          thead
-            tr
-              th Name
-              th Category
-              th detail
-              th
-              - if user_signed_in? && current_user.admin?
-                th
-                th
-
-          tbody
-            - @activity_services.each do |activity_service|
-              tr
-                td = activity_service.name
-                td = activity_service.category.name
-                td = activity_service.detail
-                td = link_to 'Show', activity_service.url, target: "_blank"
-                - if user_signed_in? && current_user.admin?
-                  td = link_to 'Edit', edit_activity_service_path(activity_service)
-                  td = link_to 'Destroy', activity_service, data: {:confirm => 'Are you sure?'}, :method => :delete
+    .row
+      - if @activity_services.blank?
+        | Sorry. There are no services with these conditions.
+      - else
+        - @activity_services.each do |activity_service|
+          .col-sm-6
+            h3 = activity_service.name
+            p
+              span.glyphicon.glyphicon-list-alt aria-hidden='true'
+              |  
+              = activity_service.category.name
+            p = activity_service.detail
+            p = link_to activity_service.url, { target: "_blank", class:'btn btn-default' } do
+              span.glyphicon.glyphicon-link
+              |  View details
+            - if user_signed_in? && current_user.admin?
+              p
+                = link_to 'Edit', edit_activity_service_path(activity_service)
+                br
+                = link_to 'Destroy', activity_service, data: {:confirm => 'Are you sure?'}, :method => :delete
 
     br
     - if user_signed_in? && current_user.admin?
