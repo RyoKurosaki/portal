@@ -24,14 +24,20 @@
 //= require bootstrap-fileinput
 //= require_tree .
 
-
 var data = {'data-date-format': 'YYYY-MM-DD' };
+var ua = navigator.userAgent.toLowerCase();
+var isMobile = /iphone/.test(ua)||/android(.+)?mobile/.test(ua);
 var ready = function(){
   $('.datepicker').attr(data);
   $('.datepicker').datetimepicker({
     ignoreReadonly: true,
     minDate: new Date()
   });
+  if (!isMobile) {
+    $('a[href^="tel:"]').on('click', function(e) {
+      e.preventDefault();
+    });
+  }
 };
 
 $(document).ready(ready);

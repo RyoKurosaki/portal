@@ -1,0 +1,39 @@
+.row
+  .col-sm-2
+  .col-sm-8
+    == render 'search'
+    h2 Search result
+    - if @activity_services.blank?
+      | Sorry. There are no services with these conditions.
+    - else
+      - @activity_services.each do |activity_service|
+        - url = activity_service.url.blank? ? activity_service : activity_service.url
+        .mb50
+          h3 = activity_service.name
+          p
+            span.glyphicon.glyphicon-list-alt aria-hidden='true'
+            |  
+            = activity_service.category.name
+          p = activity_service.detail
+          p
+            span.glyphicon.glyphicon-map-marker aria-hidden='true'
+            |  
+            - unless activity_service.address.blank?
+              = link_to activity_service.address, "https://www.google.com/maps?q=#{activity_service.address}", target: '_new'
+          p
+            span.glyphicon.glyphicon-phone-alt aria-hidden='true'
+            |  
+            - unless activity_service.tel.blank?
+              = link_to activity_service.tel, "tel:#{activity_service.tel}"
+          p = link_to url, { target: "_new", class:'btn btn-default' } do
+            span.glyphicon.glyphicon-link
+            |  View details
+          - if user_signed_in? && current_user.admin?
+            p
+              = link_to 'Edit', edit_activity_service_path(activity_service)
+              br
+              = link_to 'Destroy', activity_service, data: {:confirm => 'Are you sure?'}, :method => :delete
+    - if user_signed_in? && current_user.admin?
+      = link_to 'New Activity service', new_activity_service_path, class:'btn btn-default'
+    .mb20
+  .col-sm-2

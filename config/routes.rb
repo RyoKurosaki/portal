@@ -12,7 +12,11 @@ Rails.application.routes.draw do
   end
   resources :notices, except: [:show]
   resources :categories
-  resources :activity_services
+  resources :activity_services do
+    collection do
+      get 'search'
+    end
+  end
   resources :prefectures, only: [] do
     resources :major_cities, only: [:ajax] do
       collection do

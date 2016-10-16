@@ -1,9 +1,8 @@
 .row
   .col-sm-2
   .col-sm-8
-    p
-      strong Plan:
-      = @activity_service.name
+    .page-header
+      h1 = @activity_service.name
     p
       strong Category:
       = @activity_service.category.name
@@ -12,6 +11,12 @@
     p
       strong Detail:
       = @activity_service.detail
+    p
+      strong Address:
+      = @activity_service.address
+    p
+      strong Tel:
+      = @activity_service.tel
     p
       strong URL:
       = @activity_service.url

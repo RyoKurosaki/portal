@@ -1,11 +1,15 @@
 class ActivityServicesController < ApplicationController
-  before_action :authenticate_user!, :check_admin_user, except: [:index]
+  before_action :authenticate_user!, :check_admin_user, except: [:index, :search]
   before_action :set_activity_service, only: [:show, :edit, :update, :destroy]
   before_action :set_s3_direct_post, only: [:new, :edit, :create, :update]
 
   # GET /activity_services
   # GET /activity_services.json
   def index
+    @activity_service = ActivityService.new
+  end
+
+  def search
     @activity_service = ActivityService.new
     @activity_services = ActivityService.all
     unless params[:activity_service].nil?
@@ -84,6 +88,6 @@ class ActivityServicesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def activity_service_params
-      params.require(:activity_service).permit(:name, :category_id, :prefecture_id, :major_city_id, :url)
+      params.require(:activity_service).permit(:name, :category_id, :prefecture_id, :major_city_id, :detail, :address, :tel, :url)
     end
 end
