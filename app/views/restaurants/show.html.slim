@@ -1,0 +1,75 @@
+.row
+  .col-sm-2
+  .col-sm-8
+    .page-header
+      h1
+        = @restaurant.name
+        small = @restaurant.japanese_name
+    .row
+      .col-sm-4
+        .mb30.box
+          = image_tag(@restaurant.photo_url_1, class: "img-responsive center-block")
+      .col-sm-4
+        .mb30.box
+          = image_tag(@restaurant.photo_url_2, class: "img-responsive center-block")
+      .col-sm-4
+        .mb30.box
+          = image_tag(@restaurant.photo_url_3, class: "img-responsive center-block")
+    .row
+      .col-sm-4
+        .mb30.box
+          = image_tag(@restaurant.photo_url_4, class: "img-responsive center-block")
+      .col-sm-4
+        .mb30.box
+          = image_tag(@restaurant.photo_url_5, class: "img-responsive center-block")
+      .col-sm-4
+        .mb30.box
+          = image_tag(@restaurant.photo_url_6, class: "img-responsive center-block")
+
+    .alt-table-responsive
+      table class = 'table table-hover'
+        tbody
+          tr
+            th Cuisine
+            td = @restaurant.cuisines
+          tr
+            th Detail
+            td = @restaurant.detail
+          tr
+            th Phone Number
+            td
+              = @restaurant.tel
+              br
+              = @restaurant.tel_note
+          tr
+            th Address
+            td#address
+              = @restaurant.address
+          tr
+            th Access
+            td = @restaurant.access
+          tr
+            th Hours
+            td = @restaurant.hours
+          tr
+            th Close
+            td = @restaurant.close
+          tr
+            th Average price
+            td = @restaurant.average_price
+          tr
+            th Cards accepted
+            td = @restaurant.cards_accepted
+          tr
+            th Smoking
+            td = @restaurant.smoking
+          tr
+            th Kid friendly
+            td = @restaurant.kid_friendly
+    = link_to 'Open in Google Map', 'https://www.google.com/maps?q='+@restaurant.address, target: '_new'
+    .map_container
+      #map.map_canvas
+
+    - if user_signed_in? && current_user.admin?
+      = link_to 'Edit', edit_restaurant_path(@restaurant)
+  .col-sm-2

@@ -1,0 +1,33 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  japanese_name: MyString
+  cuisines: MyString
+  detail: 
+  tel: MyString
+  tel_note: 
+  address: MyString
+  access: MyString
+  hours: 
+  close: MyString
+  average_price: MyString
+  cards_accepted: MyString
+  smoking: MyString
+  kid_friendly: MyString
+
+two:
+  name: MyString
+  japanese_name: MyString
+  cuisines: MyString
+  detail: 
+  tel: MyString
+  tel_note: 
+  address: MyString
+  access: MyString
+  hours: 
+  close: MyString
+  average_price: MyString
+  cards_accepted: MyString
+  smoking: MyString
+  kid_friendly: MyString

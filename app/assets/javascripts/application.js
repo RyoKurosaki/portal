@@ -18,6 +18,8 @@
 //= require z.jquery.fileupload
 //= require z.jquery.fileupload-process
 //= require z.jquery.fileupload-image
+//= require underscore
+//= require gmaps/google
 //= require bootstrap-sprockets
 //= require moment
 //= require bootstrap3-datetimepicker

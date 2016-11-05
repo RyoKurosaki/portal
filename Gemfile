@@ -19,6 +19,8 @@ gem 'rails_admin'
 gem 'resources_id_replace'
 gem 'aws-sdk', '~> 2'
 gem 'webpay', '~>3.2'
+gem "gmaps4rails"
+gem "geocoder"
 
 gem 'compass-rails'
 gem 'bootstrap-sass'

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161013092240) do
+ActiveRecord::Schema.define(version: 20161031073527) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -55,6 +55,14 @@ ActiveRecord::Schema.define(version: 20161013092240) do
     t.time     "expected_time"
   end
 
+  create_table "areas", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.string   "prefecture_id"
+    t.text     "introduce_area"
+  end
+
   create_table "categories", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -84,9 +92,12 @@ ActiveRecord::Schema.define(version: 20161013092240) do
 
   create_table "major_cities", force: :cascade do |t|
     t.string   "name"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
     t.string   "prefecture_id"
+    t.string   "area_id"
+    t.string   "pickup_photo_url"
+    t.integer  "pickup_photo_primary"
   end
 
   create_table "notices", force: :cascade do |t|
@@ -109,6 +120,36 @@ ActiveRecord::Schema.define(version: 20161013092240) do
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "restaurants", force: :cascade do |t|
+    t.string   "name"
+    t.string   "japanese_name"
+    t.string   "cuisines"
+    t.text     "detail"
+    t.string   "tel"
+    t.text     "tel_note"
+    t.string   "address"
+    t.string   "access"
+    t.text     "hours"
+    t.string   "close"
+    t.string   "average_price"
+    t.string   "cards_accepted"
+    t.string   "smoking"
+    t.string   "kid_friendly"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.string   "area_id"
+    t.string   "photo_url_top"
+    t.string   "photo_url_1"
+    t.string   "photo_url_2"
+    t.string   "photo_url_3"
+    t.string   "photo_url_4"
+    t.string   "photo_url_5"
+    t.string   "photo_url_6"
+    t.string   "photo_url_7"
+    t.string   "photo_url_8"
+    t.string   "photo_url_9"
   end
 
   create_table "users", force: :cascade do |t|

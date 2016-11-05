@@ -3,6 +3,12 @@ require 'sidekiq/web'
 Rails.application.routes.draw do
   mount Sidekiq::Web => '/sidekiq'
 
+  resources :restaurants do
+    member do
+      get 'city'
+      get 'list'
+    end
+  end
   resources :ads
   resources :apply_services, only: [:index, :show, :create, :destroy, :accept, :decline] do
     member do

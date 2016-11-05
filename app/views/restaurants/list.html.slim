@@ -1,0 +1,35 @@
+.row
+  .col-sm-2
+  .col-sm-8
+    .page-header
+      h1
+        = @area.name
+        |  Area Restaurant Guide
+    = simple_format(h(@area.introduce_area))
+    - @area.restaurants.each do |restaurant|
+      .mb20.restaurant
+        h2
+          = link_to restaurant.name, restaurant
+          small = restaurant.japanese_name
+        .row
+          .col-sm-4
+            .mb20
+              = link_to image_tag(restaurant.photo_url_top), restaurant
+          .col-sm-8
+            p
+              span.glyphicon.glyphicon-cutlery aria-hidden='true'
+              |  
+              = restaurant.cuisines
+            p
+              span.glyphicon.glyphicon-map-marker aria-hidden='true'
+              |  
+              = link_to restaurant.address, "https://www.google.com/maps?q=#{restaurant.address}", target: '_new'
+            p
+              span.glyphicon.glyphicon-yen aria-hidden='true'
+              |  
+              = restaurant.average_price
+            p
+              span.glyphicon.glyphicon-time aria-hidden='true'
+              |  
+              = restaurant.hours
+  .col-sm-2

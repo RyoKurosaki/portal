@@ -7,6 +7,9 @@ html
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
     = viewport_meta_tag
+    script src="//maps.google.com/maps/api/js?v=3.23&key=AIzaSyBWuAlH1f6fTChzY5hDkMqS5hBiOER9NNQ"
+    script src="//cdn.rawgit.com/mahnunchik/markerclustererplus/master/dist/markerclusterer.min.js"
+    script src='//cdn.rawgit.com/printercu/google-maps-utility-library-v3-read-only/master/infobox/src/infobox_packed.js' type='text/javascript'
   body
     header
       nav class = 'navbar navbar-default'
@@ -31,6 +34,7 @@ html
                   li = link_to 'お知らせ', notices_path
                   li = link_to '広告', ads_path
                   li = link_to '支払い', payments_path
+              li = link_to 'restaurants', restaurants_path
             ul class = 'nav navbar-nav navbar-right'
               - if user_signed_in?
                 li = link_to current_user.name, root_path

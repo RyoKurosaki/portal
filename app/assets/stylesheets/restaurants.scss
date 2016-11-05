@@ -1,0 +1,92 @@
+#borderline {
+  padding-left: 0px;
+}
+
+#borderline li {
+  border-right:1px solid #CCC;
+  padding-right:12px;
+  margin-right:6px;
+  display: -moz-inline-box;
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+}
+#borderline li:last-child {
+  border-right:none;
+}
+
+.restaurant {
+  border: 1px solid #ddd;
+  margin: 2em 0;
+  padding: 0.5em 2em 1em;
+}
+
+h2 {
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 4px;
+}
+
+small {
+  padding-left: 10px;
+}
+
+.box {
+  border: 3px double #999;
+}
+
+.box-parent {
+  position: relative;
+}
+
+.box-parent:hover {
+  opacity: 0.8;
+  filter: alpha(opacity=80);
+  -ms-filter: "alpha( opacity=80 )";
+}
+
+.box-child {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  width: 150px;
+  font-size: x-large;
+}
+
+.box-child a {
+    color: #fff;
+}
+
+.box-child a:visited {
+    color: #fff;
+}
+
+.box-child a:hover {
+    color: #fff;
+    background: none;
+    text-decoration: none;
+}
+
+.map_container {
+    position: relative;
+    width: 100%;
+    margin-bottom: 20px;
+    padding-bottom: 56.25%; /* Ratio 16:9 ( 100%/16*9 = 56.25% ) */
+}
+
+.map_container .map_canvas {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: 0;
+    padding: 0;
+}
+
+.alt-table-responsive {
+    width: 100%;
+    overflow-y: hidden;
+    overflow-x: auto;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+    -webkit-overflow-scrolling: touch;
+}

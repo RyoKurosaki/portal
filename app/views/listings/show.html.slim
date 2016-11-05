@@ -7,7 +7,7 @@
     p
       strong Address:
       = @listing.address+' '
-      = link_to 'Open with Google Map', 'https://www.google.com/maps?q='+@listing.address, target: '_new'
+      = link_to 'Open in Google Map', 'https://www.google.com/maps?q='+@listing.address, target: '_new'
     p
       strong In English:
       = @listing.address_en

@@ -1,0 +1,19 @@
+.row
+  .col-sm-2
+  .col-sm-8
+    .page-header
+      h1
+        | Restaurant in 
+        = @prefecture.name
+    .row
+      - @major_cities.each do |major_city_primary|
+        .col-sm-4
+          .mb30.box-parent.box
+            = link_to image_tag(major_city_primary.pickup_photo_url, class: "img-responsive center-block"), list_restaurant_path(major_city_primary.area_id)
+            .box-child
+              = link_to major_city_primary.name, list_restaurant_path(major_city_primary.area_id)
+    ul#borderline
+      - @prefecture.major_cities.each do |major_city|
+        li = link_to major_city.name, list_restaurant_path(major_city.area_id)
+    .mb50
+  .col-sm-2
