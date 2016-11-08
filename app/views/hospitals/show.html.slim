@@ -1,0 +1,21 @@
+p#notice = notice
+
+p
+  strong Name:
+  = @hospital.name
+p
+  strong Detail:
+  = @hospital.detail
+p
+  strong Address:
+  = @hospital.address
+p
+  strong Tel:
+  = @hospital.tel
+p
+  strong Area:
+  = @hospital.area_id
+
+= link_to 'Edit', edit_hospital_path(@hospital)
+'|
+= link_to 'Back', hospitals_path

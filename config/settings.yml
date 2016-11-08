@@ -6,6 +6,8 @@ development:
   webpay_secret_key: test_secret_d0T8rfgtH6cdaJHdmR1iYccL
   compass_email: makera1412@gmail.com
   aws_bucket: compass-develop
+  FACEBOOK_KEY: '1173768932710527'
+  FACEBOOK_SECRET: b3def3600783363a7148f4f65316d112
 
 production:
   <<: *default

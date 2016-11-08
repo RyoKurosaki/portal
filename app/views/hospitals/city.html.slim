@@ -1,0 +1,12 @@
+.row
+  .col-sm-2
+  .col-sm-8
+    .page-header
+      h1
+        | Hospital in 
+        = @prefecture.name
+    ul#borderline
+      - @prefecture.major_cities.each do |major_city|
+        li = link_to major_city.name, list_hospital_path(major_city.area_id)
+    .mb50
+  .col-sm-2

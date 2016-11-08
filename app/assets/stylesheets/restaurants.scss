@@ -1,33 +1,7 @@
-#borderline {
-  padding-left: 0px;
-}
-
-#borderline li {
-  border-right:1px solid #CCC;
-  padding-right:12px;
-  margin-right:6px;
-  display: -moz-inline-box;
-  display: inline-block;
-  *display: inline;
-  *zoom: 1;
-}
-#borderline li:last-child {
-  border-right:none;
-}
-
 .restaurant {
   border: 1px solid #ddd;
   margin: 2em 0;
   padding: 0.5em 2em 1em;
-}
-
-h2 {
-  border-bottom: 1px solid #ddd;
-  padding-bottom: 4px;
-}
-
-small {
-  padding-left: 10px;
 }
 
 .box {

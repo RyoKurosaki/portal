@@ -1,0 +1,24 @@
+= form_for @hospital do |f|
+  - if @hospital.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@hospital.errors.count, "error")} prohibited this hospital from being saved:"
+      ul
+        - @hospital.errors.full_messages.each do |message|
+          li = message
+
+  .field
+    = f.label :name
+    = f.text_field :name
+  .field
+    = f.label :detail
+    = f.text_field :detail
+  .field
+    = f.label :address
+    = f.text_field :address
+  .field
+    = f.label :tel
+    = f.text_field :tel
+  .field
+    = f.label :area_id
+    = f.text_field :area_id
+  .actions = f.submit

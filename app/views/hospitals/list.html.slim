@@ -1,0 +1,25 @@
+.row
+  .col-sm-2
+  .col-sm-8
+    .page-header
+      h1
+        = @area.name
+        |  Area Hospital Guide
+    | All of these hospital are available in English.
+    - @area.hospitals.each do |hospital|
+      .mb20.hospital
+        h2
+          = link_to hospital.name, hospital.url, target: '_new'
+        p
+          span.glyphicon.glyphicon-align-justify aria-hidden='true'
+          |  
+          = hospital.detail
+        p
+          span.glyphicon.glyphicon-map-marker aria-hidden='true'
+          |  
+          = link_to hospital.address, "https://www.google.com/maps?q=#{hospital.address}", target: '_new'
+        p
+          span.glyphicon.glyphicon-phone-alt aria-hidden='true'
+          |  
+          = hospital.tel
+  .col-sm-2

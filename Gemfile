@@ -15,6 +15,8 @@ gem 'puma'
 gem 'devise'
 gem 'cancancan'
 gem 'rails_admin'
+gem 'omniauth'
+gem 'omniauth-facebook'
 
 gem 'resources_id_replace'
 gem 'aws-sdk', '~> 2'
