@@ -53,4 +53,9 @@
     = f.label :question
     |  (よくある質問)
     = f.text_area :question, { class:'form-control' }
+  h2 フリー項目
+  = f.fields_for :listing_details do |df|
+    = render partial: 'listing_detail_fields', locals: {f: df}
+  .mb20
+    = link_to_add_field "追加", f, :listing_details, {}
   .actions = f.submit :submit, class:'btn btn-default'

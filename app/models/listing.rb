@@ -7,6 +7,9 @@ class Listing < ActiveRecord::Base
   validates :address, presence: true
   validates :address_en, presence: true
 
+  has_many :listing_details, ->{ order(:id) }
+  accepts_nested_attributes_for :listing_details, allow_destroy: true, reject_if: :all_blank
+
   private
     def set_access_token
       self.access_token = self.access_token.blank? ? generate_access_token : self.access_token

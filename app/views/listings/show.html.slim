@@ -1,51 +1,115 @@
 .row
   .col-sm-2
   .col-sm-8
-    p
-      strong Name:
-      = @listing.name
-    p
-      strong Address:
-      = @listing.address+' '
-      = link_to 'Open in Google Map', 'https://www.google.com/maps?q='+@listing.address, target: '_new'
-    p
-      strong In English:
-      = @listing.address_en
-    p
-      = image_tag(@listing.photo, alt: '', class: 'img-responsive')
-    p
-      strong Check In:
-      = @listing.checkin
-    p
-      strong Check Out:
-      = @listing.checkout
-    p
-      strong Manual:
-      = link_to 'manual', @listing.manual
-    p
-      strong Map:
-      = link_to 'map', @listing.map
-    p
-      strong House Rule:
-      = simple_format(h @listing.house_rule)
-    p
-      strong Common Question:
-      = simple_format(h @listing.question)
-    p
-      strong Host Name:
-      = @user.name
-    p
-      strong Contact E-Mail:
-      = link_to @user.email, 'mailto:'+@user.email
-    p
-      strong Contact Number:
-      = link_to @user.tel, 'tel:'+@user.tel
-    p
-      strong LINE Account:
-      = @user.line
-    p
-      strong Facebook Account:
-      = link_to @user.facebook, @user.facebook, target: '_new'
+    .page-header
+      h1 = @listing.name
+    .listing
+      .info
+        .row
+          .col-sm-2.col-xs-6
+            strong Check In:
+          .col-sm-2.col-xs-6
+            = @listing.checkin
+          .col-sm-2.col-xs-6
+            strong Check Out:
+          .col-sm-2.col-xs-6
+            = @listing.checkout
+      .info
+        .row
+          .col-sm-2.col-xs-12
+            strong Address:
+          .col-sm-10.col-xs-12
+            = @listing.address
+          .col-sm-2
+          .col-sm-10.col-xs-12
+            = link_to 'Open in Google Map', 'https://www.google.com/maps?q='+@listing.address, target: '_new'
+      .info
+        .row
+          .col-sm-2.col-xs-12
+            strong In English:
+          .col-sm-10.col-xs-12
+            = @listing.address_en
+      .info
+        .row
+          .col-sm-12.col-xs-12
+            strong The exterior of a building
+          .col-sm-12.col-xs-12
+            .photo
+              = image_tag(@listing.photo, alt: '', class: 'img-responsive')
+      .info
+        .row
+          .col-sm-3.col-xs-7
+            strong House manual(PDF):
+          .col-sm-9.col-xs-5
+            = link_to 'Download', @listing.manual
+      .info
+        .row
+          .col-sm-3.col-xs-7
+            strong Route guide(PDF):
+          .col-sm-9.col-xs-5
+            = link_to 'Download', @listing.map
+      .info
+        .row
+          .col-sm-3.col-xs-12
+            strong House Rule:
+          .col-sm-9.col-xs-12
+            = simple_format(h @listing.house_rule)
+      .info
+        .row
+          .col-sm-3.col-xs-12
+            strong Common Question:
+          .col-sm-9.col-xs-12
+            = simple_format(h @listing.question)
+      .info
+        .row
+          .col-sm-3.col-xs-12
+            strong Host Name:
+          .col-sm-9.col-xs-12
+            = @user.name
+      .info
+        .row
+          .col-sm-3.col-xs-12
+            strong Contact E-Mail:
+          .col-sm-9.col-xs-12
+            = link_to @user.email, 'mailto:'+@user.email
+      .info
+        .row
+          .col-sm-3.col-xs-12
+            strong Contact Number:
+          .col-sm-9.col-xs-12
+            = link_to @user.tel, 'tel:'+@user.tel
+      .info
+        .row
+          .col-sm-3.col-xs-12
+            strong LINE Account:
+          .col-sm-9.col-xs-12
+            = @user.line
+      .info
+        .row
+          .col-sm-3.col-xs-12
+            strong Facebook Account:
+          .col-sm-9.col-xs-12
+            = link_to @user.facebook, @user.facebook, target: '_new'
+      .info
+        - @listing.listing_details.each do |detail|
+          .row
+            .col-sm-12.col-xs-12
+              strong = detail.name
+            .col-sm-4.col-xs-12
+              .photo
+                = image_tag(detail.photo_url, alt: '', class: 'img-responsive')
+            .col-sm-8.col-xs-12
+              = simple_format(h detail.detail)
+      .info
+        .row
+          .col-sm-3.col-xs-12
+            strong Currency Exchange:
+          .col-sm-9.col-xs-12
+            = link_to '7-11(SEVEN-BANK)', 'http://www.sevenbank.co.jp/intlcard/index2.html', target: '_new'
+        .row
+          .col-sm-3.col-xs-12
+          .col-sm-9.col-xs-12
+            = link_to 'Post Office(Japan post bank)', 'http://www.jp-bank.japanpost.jp/en/ias/en_ias_index.html', target: '_new'
     p
       == render 'activity_services/search'
 

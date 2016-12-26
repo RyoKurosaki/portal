@@ -34,17 +34,17 @@
             td = @restaurant.cuisines
           tr
             th Detail
-            td = @restaurant.detail
+            td = simple_format(h @restaurant.detail)
           tr
             th Phone Number
             td
               = @restaurant.tel
               br
-              = @restaurant.tel_note
+              = simple_format(h @restaurant.tel_note)
           tr
             th Address
-            td#address
-              = @restaurant.address
+            td
+              = @restaurant.detail_address
           tr
             th Access
             td = @restaurant.access
@@ -56,7 +56,7 @@
             td = @restaurant.close
           tr
             th Average price
-            td = @restaurant.average_price
+            td = simple_format(h @restaurant.average_price)
           tr
             th Cards accepted
             td = @restaurant.cards_accepted
@@ -67,6 +67,8 @@
             th Kid friendly
             td = @restaurant.kid_friendly
     = link_to 'Open in Google Map', 'https://www.google.com/maps?q='+@restaurant.address, target: '_new'
+    #address
+      = @restaurant.address
     .map_container
       #map.map_canvas
 

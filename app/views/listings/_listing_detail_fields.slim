@@ -1,0 +1,11 @@
+.listing_detail
+  .field.form-group
+    = f.label :name, "項目名", class: 'free-name'
+    = f.text_field :name, class: 'form-control'
+  .field.form-group
+    = f.label :photo_url, "画像", class: 'free-photo'
+    = f.file_field :photo_url, accept: 'image/*', class:'js-img-upload'
+  .field.form-group
+    = f.label :detail, "詳細", class: 'free-detail'
+    = f.text_area :detail, class: 'form-control'
+  = link_to_remove_field "削除", f, {}

@@ -20,6 +20,7 @@ class ListingsController < ApplicationController
   # GET /listings/new
   def new
     @listing = Listing.new
+    @listing.listing_details.build
   end
 
   # GET /listings/1/edit
@@ -102,6 +103,6 @@ class ListingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def listing_params
-      params.require(:listing).permit(:name, :address, :address_en, :photo, :manual, :map, :checkin, :checkout, :house_rule, :question)
+      params.require(:listing).permit(:name, :address, :address_en, :photo, :manual, :map, :checkin, :checkout, :house_rule, :question, listing_details_attributes: [:id, :name, :photo_url, :detail, :_destroy])
     end
 end
