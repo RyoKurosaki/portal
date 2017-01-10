@@ -17,7 +17,7 @@
             th
 
         tbody
-          - @apply_services.where(accept: nil).order(expected_date: :asc).each do |apply_service|
+          - Array(@apply_services.where(accept: nil).order(expected_date: :asc)).each do |apply_service|
             tr
               td = apply_service.name
               td = apply_service.activity_service.name
@@ -38,7 +38,7 @@
             th
             th
         tbody
-          - @apply_services.where(accept: true).order(expected_date: :asc).each do |apply_service|
+          - Array(@apply_services.where(accept: true).order(expected_date: :asc)).each do |apply_service|
             tr
               td = apply_service.name
               td = apply_service.activity_service.name
@@ -59,7 +59,7 @@
             th
             th
         tbody
-          - @apply_services.where(accept: false).order(expected_date: :asc).each do |apply_service|
+          - Array(@apply_services.where(accept: false).order(expected_date: :asc)).each do |apply_service|
             tr
               td = apply_service.name
               td = apply_service.activity_service.name
