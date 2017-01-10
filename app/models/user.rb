@@ -9,15 +9,20 @@ class User < ActiveRecord::Base
   validates :facebook, format: /\A#{URI::regexp(%w(https))}\www.facebook.com/, allow_blank: true
 
   def self.find_for_oauth(auth)
-    user = User.where(uid: auth.uid, provider: auth.provider).first
+    user = User.find_by(uid: auth.uid, provider: auth.provider)
     unless user
-      user = User.new(
-        uid: auth.uid,
-        provider: auth.provider,
-        name: auth.info.name,
-        email: User.get_email(auth),
-        password: Devise.friendly_token[8, 30])
-      user.save(validate: false)
+      unless User.exists?(email: User.get_email(auth))
+        user = User.new(
+          uid: auth.uid,
+          provider: auth.provider,
+          name: auth.info.name,
+          email: User.get_email(auth),
+          password: Devise.friendly_token[8, 30])
+        user.save(validate: false)
+      else
+        user = User.find_by(email: User.get_email(auth))
+        user.update(uid: auth.uid, provider: auth.provider)
+      end
     end
     user
   end
